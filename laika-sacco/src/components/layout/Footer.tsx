@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Phone, Mail, MapPin, Clock, Facebook, Twitter, Linkedin } from 'lucide-react';
+import { Shield, Phone, Mail, MapPin, Clock, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -33,6 +33,9 @@ const Footer = () => {
               <a href="#" className="w-10 h-10 bg-primary-light rounded-lg flex items-center justify-center hover:bg-gold transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
+              <a href="#" className="w-10 h-10 bg-primary-light rounded-lg flex items-center justify-center hover:bg-gold transition-colors">
+                <Instagram className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
@@ -55,22 +58,24 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 text-gold mt-0.5" />
                 <div>
-                  <p className="text-primary-foreground/90">+254 700 123 456</p>
-                  <p className="text-primary-foreground/90">+254 733 987 654</p>
+                  <p className="text-primary-foreground/90">+254 795 900 483</p>
+                  <p className="text-primary-foreground/90">+254 700 335 065</p>
+
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <Mail className="w-5 h-5 text-gold mt-0.5" />
                 <div>
-                  <p className="text-primary-foreground/90">info@laikasacco.co.ke</p>
-                  <p className="text-primary-foreground/90">support@laikasacco.co.ke</p>
+                  <p className="text-primary-foreground/90">info@laikasacco.com</p>
+                  <p className="text-primary-foreground/90">support@laikasacco.com</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-gold mt-0.5" />
                 <p className="text-primary-foreground/90">
-                  Laika Plaza, 3rd Floor<br />
-                  Moi Avenue, Nairobi
+                  Amani House, 2nd Floor<br />
+                  Kenyatta Highway – Mukiriti
+                  Thika, Kenya.
                 </p>
               </div>
               <div className="flex items-start space-x-3">

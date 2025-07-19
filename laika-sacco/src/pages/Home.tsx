@@ -99,9 +99,9 @@ const Home = () => {
                 <div className="w-16 h-16 bg-gradient-gold rounded-full flex items-center justify-center mx-auto">
                   <TrendingUp className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-primary">Competitive Returns</h3>
+                <h3 className="text-xl font-semibold text-primary">Withdrawable savings (Jibebe Account)</h3>
                 <p className="text-muted-foreground">
-                  Earn up to 12% annual dividends on your savings with our high-yield accounts
+                interest ~2% per annum, paid at the end of a 12‑month savings cycle 
                 </p>
               </CardContent>
             </Card>
