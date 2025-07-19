@@ -59,7 +59,7 @@ const Home = () => {
       <section className="py-20 bg-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold font-serif text-primary mb-6">
-            Empowering Financial Dreams Since 2010
+            Empowering Financial Dreams Since 1997
           </h2>
           <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
             At Laika SACCO Society Limited, we believe in the power of collective financial growth. 
