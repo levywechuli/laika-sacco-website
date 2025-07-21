@@ -24,11 +24,13 @@ const Header = () => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <Shield className="w-6 h-6 text-white" />
-            </div>
+            <img 
+              src="/logo.png/Pasted image.png" 
+              alt="Laika Savings & Credit Cooperative Society Ltd" 
+              className="h-12 w-auto"
+            />
             <div>
-              <h1 className="text-xl font-bold font-serif text-primary">Laika SACCO</h1>
+              <h1 className="text-xl font-bold font-serif text-primary">Laika Sacco</h1>
               <p className="text-xs text-muted-foreground">Society Limited</p>
             </div>
           </Link>

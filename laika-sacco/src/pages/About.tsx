@@ -12,7 +12,7 @@ const About = () => {
             About Laika SACCO
           </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto">
-            Building financial futures together since 2010. Discover our journey, 
+            Building financial futures together since 1997. Discover our journey, 
             mission, and commitment to empowering our members.
           </p>
         </div>
@@ -28,7 +28,7 @@ const About = () => {
               </h2>
               <div className="space-y-6 text-lg text-muted-foreground">
                 <p>
-                  Founded in 2010, Laika SACCO Society Limited emerged from a vision to create 
+                  Founded in 1997, Laika SACCO Society Limited emerged from a vision to create 
                   a financial institution that truly serves the Kenyan community. What started 
                   as a small cooperative with 100 members has grown into one of Kenya's most 
                   trusted SACCOs, serving over 50,000 members nationwide.
@@ -41,7 +41,7 @@ const About = () => {
                 </p>
                 <p>
                   Today, we stand as a testament to the power of collective financial growth, 
-                  with assets worth over KES 15 billion and a track record of delivering 
+                  and a track record of delivering 
                   consistent returns to our members.
                 </p>
               </div>
@@ -49,8 +49,8 @@ const About = () => {
             <div className="grid grid-cols-2 gap-6">
               <Card className="text-center p-6 shadow-card">
                 <CardContent className="space-y-4">
-                  <div className="text-3xl font-bold text-primary">50K+</div>
-                  <p className="text-muted-foreground">Active Members</p>
+                  <div className="text-3xl font-bold text-primary">1500+</div>
+                  <p className="text-muted-foreground">Members</p>
                 </CardContent>
               </Card>
               <Card className="text-center p-6 shadow-card">
@@ -61,7 +61,7 @@ const About = () => {
               </Card>
               <Card className="text-center p-6 shadow-card">
                 <CardContent className="space-y-4">
-                  <div className="text-3xl font-bold text-primary">14</div>
+                  <div className="text-3xl font-bold text-primary">28</div>
                   <p className="text-muted-foreground">Years of Service</p>
                 </CardContent>
               </Card>
@@ -88,9 +88,8 @@ const About = () => {
                 </div>
                 <h3 className="text-2xl font-bold font-serif text-primary">Our Mission</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  To provide accessible, innovative, and trustworthy financial services that 
-                  empower our members to achieve their personal and business aspirations while 
-                  fostering economic growth in Kenya.
+                  to improve living standards of members through provision of 
+                  high quality financial products at affordable rates.
                 </p>
               </CardContent>
             </Card>
@@ -103,7 +102,7 @@ const About = () => {
                 </div>
                 <h3 className="text-2xl font-bold font-serif text-primary">Our Vision</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  To be the leading SACCO in East Africa, recognized for excellence in 
+                  To be the leading SACCO in the region, recognized for excellence in 
                   financial services, member satisfaction, and contribution to sustainable 
                   economic development.
                 </p>
@@ -149,8 +148,8 @@ const About = () => {
                 <div className="w-24 h-24 bg-gradient-primary rounded-full flex items-center justify-center mx-auto">
                   <Users className="w-12 h-12 text-white" />
                 </div>
-                <h4 className="text-xl font-semibold text-primary">Dr. James Kimani</h4>
-                <p className="text-gold font-medium">Chief Executive Officer</p>
+                <h4 className="text-xl font-semibold text-primary">Mary Nabwire Obayi</h4>
+                <p className="text-gold font-medium">Managing Director</p>
                 <p className="text-sm text-muted-foreground">
                   20+ years in financial services with expertise in cooperative development
                 </p>
@@ -162,8 +161,8 @@ const About = () => {
                 <div className="w-24 h-24 bg-gradient-gold rounded-full flex items-center justify-center mx-auto">
                   <Shield className="w-12 h-12 text-white" />
                 </div>
-                <h4 className="text-xl font-semibold text-primary">Mary Wanjiku</h4>
-                <p className="text-gold font-medium">Chief Financial Officer</p>
+                <h4 className="text-xl font-semibold text-primary">Jacob Lesirma</h4>
+                <p className="text-gold font-medium">Chairman</p>
                 <p className="text-sm text-muted-foreground">
                   CPA with 15 years experience in SACCO financial management
                 </p>
@@ -175,8 +174,8 @@ const About = () => {
                 <div className="w-24 h-24 bg-gradient-primary rounded-full flex items-center justify-center mx-auto">
                   <Award className="w-12 h-12 text-white" />
                 </div>
-                <h4 className="text-xl font-semibold text-primary">Peter Ochieng</h4>
-                <p className="text-gold font-medium">Head of Operations</p>
+                <h4 className="text-xl font-semibold text-primary">Joseph Mwanzia</h4>
+                <p className="text-gold font-medium">Vice Chairman</p>
                 <p className="text-sm text-muted-foreground">
                   Expert in operational excellence and member service delivery
                 </p>
