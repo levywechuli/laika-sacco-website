@@ -265,7 +265,7 @@ const Contact = () => {
                   <Navigation className="w-16 h-16 text-gold mx-auto mb-4" />
                   <h3 className="text-xl font-semibold text-primary mb-2">Interactive Map</h3>
                   <p className="text-muted-foreground max-w-md">
-                    Our office is located in Laika Plaza on Moi Avenue, easily accessible 
+                    Our office is located at Amani house  in Mukereti, easily accessible 
                     by public transport and with ample parking available.
                   </p>
                  <Button
@@ -295,7 +295,7 @@ const Contact = () => {
               Our Branch Network
             </h2>
             <p className="text-lg text-muted-foreground">
-              Visit any of our branches across Kenya for personalized service
+              Visit  our Head Quaters in Thika  for personalized service
             </p>
           </div>
 
@@ -318,28 +318,39 @@ const Contact = () => {
                 <CardHeader>
                   <div className="flex items-center space-x-3">
                     <Building2 className="w-8 h-8 text-gold" />
-                    <CardTitle className="text-primary">Nairobi Main Branch</CardTitle>
+                    <CardTitle className="text-primary">Thika Branch</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-muted-foreground">
-                    Laika Plaza, 3rd Floor<br />
-                    Moi Avenue, Nairobi<br />
-                    P.O. Box 12345-00100<br />
-                    Nairobi, Kenya
+                    Amani house ,2nd Floor<br />
+                    Mukereti , Thika<br />
+                    P.O Box 3900-01002 <br />
+                    Thika, Kenya
                   </p>
                   <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                     <Phone className="w-4 h-4" />
-                    <span>+254 700 123 456</span>
+                    <span>+254 700 335 065</span>
                   </div>
                   <p className="text-sm text-primary font-medium bg-gold/10 px-3 py-1 rounded-full inline-block">
                     Headquarters & Full Services
                   </p>
                   <div className="pt-4">
-                    <Button variant="outline" className="w-full">
-                      <MapPin className="w-4 h-4 mr-2" />
-                      Get Directions
-                    </Button>
+                   <Button
+                      variant="outline"
+                    className="w-full"
+                      asChild >
+                          
+  <a
+    href="https://www.google.com/maps/dir/?api=1&destination=Amani+House+Kenyatta+Highway+Thika+Kenya"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <MapPin className="w-4 h-4 mr-2" />
+    Get Directions
+  </a>
+</Button>
+
                   </div>
                 </CardContent>
               </Card>
