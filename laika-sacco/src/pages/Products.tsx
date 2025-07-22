@@ -42,40 +42,106 @@ const Products = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Card className="shadow-card hover:shadow-premium transition-all duration-300 hover:-translate-y-2">
               <CardHeader className="text-center pb-4">
                 <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <PiggyBank className="w-8 h-8 text-white" />
+                  <Building2 className="w-8 h-8 text-white" />
                 </div>
-                <CardTitle className="text-xl text-primary">Regular Savings</CardTitle>
-                <Badge variant="secondary" className="mx-auto">Most Popular</Badge>
+                <CardTitle className="text-xl text-primary">Share Capital</CardTitle>
+                <Badge variant="secondary" className="mx-auto">Required</Badge>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-gold">8.5%</div>
+                  <div className="text-3xl font-bold text-gold">300</div>
+                  <p className="text-sm text-muted-foreground">Minimum Shares</p>
+                </div>
+                <ul className="space-y-2">
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-5 h-5 text-success mt-0.5" />
+                    <span className="text-sm">At least 300 shares of Kshs.20/= each</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-5 h-5 text-success mt-0.5" />
+                    <span className="text-sm">Not refundable or assignable as collateral</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-5 h-5 text-success mt-0.5" />
+                    <span className="text-sm">Transferable to other members upon exit</span>
+                  </li>
+                </ul>
+                <Link to="/membership">
+                  <Button className="w-full mt-6" variant="default">
+                    Join Now
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-card hover:shadow-premium transition-all duration-300 hover:-translate-y-2">
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                  <PiggyBank className="w-8 h-8 text-white" />
+                </div>
+                <CardTitle className="text-xl text-primary">Deposits</CardTitle>
+                <Badge variant="outline" className="mx-auto border-gold text-gold">Collateral</Badge>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-gold">1,500</div>
+                  <p className="text-sm text-muted-foreground">Minimum Monthly (KES)</p>
+                </div>
+                <ul className="space-y-2">
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-5 h-5 text-success mt-0.5" />
+                    <span className="text-sm">Through Check off system/Mpesa or Cash</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-5 h-5 text-success mt-0.5" />
+                    <span className="text-sm">Can be used as collateral for loans</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-5 h-5 text-success mt-0.5" />
+                    <span className="text-sm">Refundable after 60 days upon exit</span>
+                  </li>
+                </ul>
+                <Link to="/membership">
+                  <Button className="w-full mt-6" variant="gold">
+                    Start Saving
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-card hover:shadow-premium transition-all duration-300 hover:-translate-y-2">
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                  <TrendingUp className="w-8 h-8 text-white" />
+                </div>
+                <CardTitle className="text-xl text-primary">Withdrawable Deposits - JIBEBE</CardTitle>
+                <Badge variant="secondary" className="mx-auto">Flexible</Badge>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-gold">5%</div>
                   <p className="text-sm text-muted-foreground">Annual Interest</p>
                 </div>
                 <ul className="space-y-2">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-5 h-5 text-success mt-0.5" />
-                    <span className="text-sm">Minimum deposit: KES 1,000</span>
+                    <span className="text-sm">Save and withdraw at the end of twelve months</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-5 h-5 text-success mt-0.5" />
-                    <span className="text-sm">Monthly contributions from KES 500</span>
+                    <span className="text-sm">Earns interest of 5%</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-5 h-5 text-success mt-0.5" />
-                    <span className="text-sm">Easy withdrawal access</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-5 h-5 text-success mt-0.5" />
-                    <span className="text-sm">Mobile banking enabled</span>
+                    <span className="text-sm">Flexible savings option</span>
                   </li>
                 </ul>
                 <Link to="/membership">
-                  <Button className="w-full mt-6" variant="default">
+                  <Button className="w-full mt-6" variant="outline">
                     Open Account
                   </Button>
                 </Link>
@@ -85,71 +151,28 @@ const Products = () => {
             <Card className="shadow-card hover:shadow-premium transition-all duration-300 hover:-translate-y-2">
               <CardHeader className="text-center pb-4">
                 <div className="w-16 h-16 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="w-8 h-8 text-white" />
-                </div>
-                <CardTitle className="text-xl text-primary">Fixed Deposit</CardTitle>
-                <Badge variant="outline" className="mx-auto border-gold text-gold">High Yield</Badge>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gold">12%</div>
-                  <p className="text-sm text-muted-foreground">Annual Interest</p>
-                </div>
-                <ul className="space-y-2">
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-5 h-5 text-success mt-0.5" />
-                    <span className="text-sm">Minimum deposit: KES 50,000</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-5 h-5 text-success mt-0.5" />
-                    <span className="text-sm">Terms: 6, 12, 24 months</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-5 h-5 text-success mt-0.5" />
-                    <span className="text-sm">Guaranteed returns</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-5 h-5 text-success mt-0.5" />
-                    <span className="text-sm">Can be used as loan collateral</span>
-                  </li>
-                </ul>
-                <Link to="/membership">
-                  <Button className="w-full mt-6" variant="gold">
-                    Open Account
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-card hover:shadow-premium transition-all duration-300 hover:-translate-y-2">
-              <CardHeader className="text-center pb-4">
-                <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
                   <Shield className="w-8 h-8 text-white" />
                 </div>
-                <CardTitle className="text-xl text-primary">Junior Savings</CardTitle>
+                <CardTitle className="text-xl text-primary">Junior Account/Mtoto Mpendwa</CardTitle>
                 <Badge variant="secondary" className="mx-auto">For Children</Badge>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-gold">9%</div>
+                  <div className="text-3xl font-bold text-gold">5%</div>
                   <p className="text-sm text-muted-foreground">Annual Interest</p>
                 </div>
                 <ul className="space-y-2">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-5 h-5 text-success mt-0.5" />
-                    <span className="text-sm">For children under 18</span>
+                    <span className="text-sm">For children who have not reached majority age</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-5 h-5 text-success mt-0.5" />
-                    <span className="text-sm">No minimum balance</span>
+                    <span className="text-sm">Parents can save for their children</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-5 h-5 text-success mt-0.5" />
-                    <span className="text-sm">Educational rewards program</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-5 h-5 text-success mt-0.5" />
-                    <span className="text-sm">Financial literacy training</span>
+                    <span className="text-sm">Earns 5% interest</span>
                   </li>
                 </ul>
                 <Link to="/membership">
@@ -175,21 +198,322 @@ const Products = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Development Loans */}
             <Card className="shadow-card hover:shadow-premium transition-all duration-300">
               <CardHeader>
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center">
-                    <CreditCard className="w-6 h-6 text-white" />
+                    <Building2 className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <CardTitle className="text-xl text-primary">Personal Loans</CardTitle>
-                    <p className="text-sm text-muted-foreground">Quick personal financing</p>
+                    <CardTitle className="text-xl text-primary">Development Loans</CardTitle>
+                    <p className="text-sm text-muted-foreground">Build your future</p>
                   </div>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid grid-cols-3 gap-4 text-center">
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div>
+                    <div className="flex items-center justify-center space-x-1 text-gold">
+                      <Percent className="w-4 h-4" />
+                      <span className="font-bold">1%</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">Monthly Rate</p>
+                  </div>
+                  <div>
+                    <div className="flex items-center justify-center space-x-1 text-gold">
+                      <Clock className="w-4 h-4" />
+                      <span className="font-bold">48</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">Months</p>
+                  </div>
+                </div>
+                <ul className="space-y-2">
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
+                    <span className="text-sm">3 times your deposit</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
+                    <span className="text-sm">Reducing balance interest</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
+                    <span className="text-sm">Four guarantors required</span>
+                  </li>
+                </ul>
+                <Button className="w-full" variant="premium">
+                  Apply Now
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Emergency Loan */}
+            <Card className="shadow-card hover:shadow-premium transition-all duration-300">
+              <CardHeader>
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-gold rounded-lg flex items-center justify-center">
+                    <Shield className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-xl text-primary">Emergency Loan</CardTitle>
+                    <p className="text-sm text-muted-foreground">Urgent financial help</p>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div>
+                    <div className="flex items-center justify-center space-x-1 text-gold">
+                      <Percent className="w-4 h-4" />
+                      <span className="font-bold">1.75%</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">Monthly Rate</p>
+                  </div>
+                  <div>
+                    <div className="flex items-center justify-center space-x-1 text-gold">
+                      <Clock className="w-4 h-4" />
+                      <span className="font-bold">12</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">Months</p>
+                  </div>
+                </div>
+                <ul className="space-y-2">
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
+                    <span className="text-sm">24-hour processing</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
+                    <span className="text-sm">Fixed interest rate</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
+                    <span className="text-sm">For urgent occurrences</span>
+                  </li>
+                </ul>
+                <Button className="w-full" variant="gold">
+                  Apply Now
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* School Fee Loan */}
+            <Card className="shadow-card hover:shadow-premium transition-all duration-300">
+              <CardHeader>
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center">
+                    <PiggyBank className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-xl text-primary">School Fee Loan</CardTitle>
+                    <p className="text-sm text-muted-foreground">Education financing</p>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div>
+                    <div className="flex items-center justify-center space-x-1 text-gold">
+                      <Percent className="w-4 h-4" />
+                      <span className="font-bold">1%</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">Monthly Rate</p>
+                  </div>
+                  <div>
+                    <div className="flex items-center justify-center space-x-1 text-gold">
+                      <Clock className="w-4 h-4" />
+                      <span className="font-bold">12</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">Months</p>
+                  </div>
+                </div>
+                <ul className="space-y-2">
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
+                    <span className="text-sm">3 times member's deposits</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
+                    <span className="text-sm">Reducing balance interest</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
+                    <span className="text-sm">Alongside other loans</span>
+                  </li>
+                </ul>
+                <Button className="w-full" variant="premium">
+                  Apply Now
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Instant Loan */}
+            <Card className="shadow-card hover:shadow-premium transition-all duration-300">
+              <CardHeader>
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-gold rounded-lg flex items-center justify-center">
+                    <CreditCard className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-xl text-primary">Instant Loan</CardTitle>
+                    <p className="text-sm text-muted-foreground">Quick cash via M-PESA</p>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div>
+                    <div className="flex items-center justify-center space-x-1 text-gold">
+                      <Percent className="w-4 h-4" />
+                      <span className="font-bold">2%</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">Monthly Rate</p>
+                  </div>
+                  <div>
+                    <div className="flex items-center justify-center space-x-1 text-gold">
+                      <Clock className="w-4 h-4" />
+                      <span className="font-bold">12</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">Months</p>
+                  </div>
+                </div>
+                <ul className="space-y-2">
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
+                    <span className="text-sm">Processed as you wait</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
+                    <span className="text-sm">Paid through M-PESA</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
+                    <span className="text-sm">Interest paid upfront</span>
+                  </li>
+                </ul>
+                <Button className="w-full" variant="gold">
+                  Apply Now
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Okoa Siku Loan */}
+            <Card className="shadow-card hover:shadow-premium transition-all duration-300">
+              <CardHeader>
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center">
+                    <Clock className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-xl text-primary">Okoa Siku Loan</CardTitle>
+                    <p className="text-sm text-muted-foreground">Short-term rescue</p>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div>
+                    <div className="flex items-center justify-center space-x-1 text-gold">
+                      <Percent className="w-4 h-4" />
+                      <span className="font-bold">10%</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">Monthly Rate</p>
+                  </div>
+                  <div>
+                    <div className="flex items-center justify-center space-x-1 text-gold">
+                      <Clock className="w-4 h-4" />
+                      <span className="font-bold">2</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">Months</p>
+                  </div>
+                </div>
+                <ul className="space-y-2">
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
+                    <span className="text-sm">Processed as you wait</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
+                    <span className="text-sm">Paid through M-PESA</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
+                    <span className="text-sm">Interest paid upfront</span>
+                  </li>
+                </ul>
+                <Button className="w-full" variant="premium">
+                  Apply Now
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Holiday Loan */}
+            <Card className="shadow-card hover:shadow-premium transition-all duration-300">
+              <CardHeader>
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-gold rounded-lg flex items-center justify-center">
+                    <TrendingUp className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-xl text-primary">Holiday Loan</CardTitle>
+                    <p className="text-sm text-muted-foreground">Enjoy your holidays</p>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div>
+                    <div className="flex items-center justify-center space-x-1 text-gold">
+                      <Percent className="w-4 h-4" />
+                      <span className="font-bold">10%</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">Monthly Rate</p>
+                  </div>
+                  <div>
+                    <div className="flex items-center justify-center space-x-1 text-gold">
+                      <Clock className="w-4 h-4" />
+                      <span className="font-bold">3</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">Months</p>
+                  </div>
+                </div>
+                <ul className="space-y-2">
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
+                    <span className="text-sm">Processed as you wait</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
+                    <span className="text-sm">Paid through M-PESA</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
+                    <span className="text-sm">Interest paid upfront</span>
+                  </li>
+                </ul>
+                <Button className="w-full" variant="gold">
+                  Apply Now
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Karibu Loan */}
+            <Card className="shadow-card hover:shadow-premium transition-all duration-300">
+              <CardHeader>
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center">
+                    <DollarSign className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-xl text-primary">Karibu Loan</CardTitle>
+                    <p className="text-sm text-muted-foreground">Welcome new members</p>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4 text-center">
                   <div>
                     <div className="flex items-center justify-center space-x-1 text-gold">
                       <Percent className="w-4 h-4" />
@@ -199,90 +523,27 @@ const Products = () => {
                   </div>
                   <div>
                     <div className="flex items-center justify-center space-x-1 text-gold">
-                      <DollarSign className="w-4 h-4" />
-                      <span className="font-bold">5M</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">Max Amount</p>
-                  </div>
-                  <div>
-                    <div className="flex items-center justify-center space-x-1 text-gold">
                       <Clock className="w-4 h-4" />
-                      <span className="font-bold">48</span>
+                      <span className="font-bold">12</span>
                     </div>
-                    <p className="text-xs text-muted-foreground">Max Months</p>
+                    <p className="text-xs text-muted-foreground">Months</p>
                   </div>
                 </div>
                 <ul className="space-y-2">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-success mt-0.5" />
-                    <span className="text-sm">No collateral required</span>
+                    <span className="text-sm">For new check off members</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-success mt-0.5" />
-                    <span className="text-sm">24-hour approval</span>
+                    <span className="text-sm">48-hour processing</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-success mt-0.5" />
-                    <span className="text-sm">Flexible repayment terms</span>
+                    <span className="text-sm">1/3 retained as deposits</span>
                   </li>
                 </ul>
                 <Button className="w-full" variant="premium">
-                  Apply Now
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-card hover:shadow-premium transition-all duration-300">
-              <CardHeader>
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-gold rounded-lg flex items-center justify-center">
-                    <Building2 className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <CardTitle className="text-xl text-primary">Business Loans</CardTitle>
-                    <p className="text-sm text-muted-foreground">Grow your business</p>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid grid-cols-3 gap-4 text-center">
-                  <div>
-                    <div className="flex items-center justify-center space-x-1 text-gold">
-                      <Percent className="w-4 h-4" />
-                      <span className="font-bold">1.2%</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">Monthly Rate</p>
-                  </div>
-                  <div>
-                    <div className="flex items-center justify-center space-x-1 text-gold">
-                      <DollarSign className="w-4 h-4" />
-                      <span className="font-bold">20M</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">Max Amount</p>
-                  </div>
-                  <div>
-                    <div className="flex items-center justify-center space-x-1 text-gold">
-                      <Clock className="w-4 h-4" />
-                      <span className="font-bold">60</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">Max Months</p>
-                  </div>
-                </div>
-                <ul className="space-y-2">
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
-                    <span className="text-sm">Business plan required</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
-                    <span className="text-sm">Competitive rates</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-success mt-0.5" />
-                    <span className="text-sm">Business advisory support</span>
-                  </li>
-                </ul>
-                <Button className="w-full" variant="gold">
                   Apply Now
                 </Button>
               </CardContent>

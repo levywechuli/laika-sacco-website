@@ -278,7 +278,7 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="max-w-md mx-auto">
             <Card className="shadow-card hover:shadow-premium transition-all duration-300">
               <CardHeader>
                 <div className="flex items-center space-x-3">
@@ -296,46 +296,6 @@ const Contact = () => {
                   +254 700 123 456
                 </p>
                 <p className="text-sm text-primary font-medium">Headquarters & Full Services</p>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-card hover:shadow-premium transition-all duration-300">
-              <CardHeader>
-                <div className="flex items-center space-x-3">
-                  <Building2 className="w-8 h-8 text-gold" />
-                  <CardTitle className="text-primary">Kisumu Branch</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <p className="text-muted-foreground">
-                  Mega Plaza, 2nd Floor<br />
-                  Oginga Odinga Street, Kisumu
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  <Phone className="w-4 h-4 inline mr-1" />
-                  +254 733 111 222
-                </p>
-                <p className="text-sm text-primary font-medium">Full Banking Services</p>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-card hover:shadow-premium transition-all duration-300">
-              <CardHeader>
-                <div className="flex items-center space-x-3">
-                  <Building2 className="w-8 h-8 text-gold" />
-                  <CardTitle className="text-primary">Nakuru Branch</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <p className="text-muted-foreground">
-                  Westside Mall, 1st Floor<br />
-                  Kenyatta Avenue, Nakuru
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  <Phone className="w-4 h-4 inline mr-1" />
-                  +254 722 333 444
-                </p>
-                <p className="text-sm text-primary font-medium">Full Banking Services</p>
               </CardContent>
             </Card>
           </div>
