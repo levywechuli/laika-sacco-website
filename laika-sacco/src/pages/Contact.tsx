@@ -15,6 +15,8 @@ import {
   Navigation,
   HeadphonesIcon
 } from 'lucide-react';
+import customerService from '@/assets/customer-service.jpg';
+import branchExteriorImage from '@/assets/branch-office.jpg';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -142,7 +144,7 @@ const Contact = () => {
               </Card>
             </div>
 
-            {/* Contact Information */}
+            {/* Contact Information with Image */}
             <div className="space-y-8">
               <div>
                 <h2 className="text-3xl font-bold font-serif text-primary mb-8">
@@ -152,6 +154,16 @@ const Contact = () => {
                   Visit us, call us, or send us an email. Our team is ready to assist you 
                   with all your financial needs.
                 </p>
+              </div>
+
+              {/* Customer Service Image */}
+              <div className="relative overflow-hidden rounded-lg shadow-premium mb-8">
+                <img 
+                  src={customerService} 
+                  alt="Professional customer service team"
+                  className="w-full h-64 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-primary/20"></div>
               </div>
 
               <div className="space-y-6">
@@ -164,10 +176,10 @@ const Contact = () => {
                       <div>
                         <h3 className="text-lg font-semibold text-primary mb-2">Visit Our Office</h3>
                         <p className="text-muted-foreground">
-                          Laika Plaza, 3rd Floor<br />
-                          Moi Avenue, Nairobi<br />
-                          P.O. Box 12345-00100<br />
-                          Nairobi, Kenya
+                          Amani House, 2nd Floor<br />
+                          Mukiriti, Thika<br />
+                          P.O. Box 3900–01002<br />
+                          Thika, Kenya
                         </p>
                       </div>
                     </div>
@@ -183,9 +195,9 @@ const Contact = () => {
                       <div>
                         <h3 className="text-lg font-semibold text-primary mb-2">Call Us</h3>
                         <p className="text-muted-foreground">
-                          Main Line: +254 700 123 456<br />
-                          Customer Care: +254 733 987 654<br />
-                          Toll Free: 0800 123 456
+                          Main Line: +254 795 900 483<br />
+                          Customer Care: +254 700 335 065<br />
+                        
                         </p>
                       </div>
                     </div>
@@ -201,9 +213,9 @@ const Contact = () => {
                       <div>
                         <h3 className="text-lg font-semibold text-primary mb-2">Email Us</h3>
                         <p className="text-muted-foreground">
-                          General: info@laikasacco.co.ke<br />
-                          Support: support@laikasacco.co.ke<br />
-                          Loans: loans@laikasacco.co.ke
+                          General:@Laikasaccosociety@gmail.com<br />
+                          Support:@Laikasaccosociety@gmail.com<br />
+                          Loans:@Laikasaccosociety@gmail.com
                         </p>
                       </div>
                     </div>
@@ -233,7 +245,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Map Section */}
+      {/* Map Section with Office Interior */}
       <section className="py-20 bg-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -241,7 +253,7 @@ const Contact = () => {
               Find Us
             </h2>
             <p className="text-lg text-muted-foreground">
-              Conveniently located in the heart of Nairobi
+              Conveniently located in the heart of Thika
             </p>
           </div>
 
@@ -256,9 +268,18 @@ const Contact = () => {
                     Our office is located in Laika Plaza on Moi Avenue, easily accessible 
                     by public transport and with ample parking available.
                   </p>
-                  <Button variant="outline" className="mt-4">
-                    Get Directions
-                  </Button>
+                 <Button
+                  variant="outline"
+                  className="mt-4"
+                  asChild>
+
+                 <a
+                   href="https://www.google.com/maps/dir/?api=1&destination=Amani+House+Kenyatta+Highway+Thika+Kenya"
+                    target="_blank"
+                    rel="noopener noreferrer" >
+                    Get Directions </a>
+                 </Button>
+
                 </div>
               </div>
             </CardContent>
@@ -266,7 +287,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Branch Network */}
+      {/* Branch Network with Visual */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -278,26 +299,51 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="max-w-md mx-auto">
-            <Card className="shadow-card hover:shadow-premium transition-all duration-300">
-              <CardHeader>
-                <div className="flex items-center space-x-3">
-                  <Building2 className="w-8 h-8 text-gold" />
-                  <CardTitle className="text-primary">Nairobi Main Branch</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <p className="text-muted-foreground">
-                  Laika Plaza, 3rd Floor<br />
-                  Moi Avenue, Nairobi
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  <Phone className="w-4 h-4 inline mr-1" />
-                  +254 700 123 456
-                </p>
-                <p className="text-sm text-primary font-medium">Headquarters & Full Services</p>
-              </CardContent>
-            </Card>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="relative">
+              <img 
+                src={branchExteriorImage} 
+                alt="Laika SACCO Branch Exterior" 
+                className="rounded-2xl shadow-premium w-full"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl"></div>
+              <div className="absolute bottom-6 left-6 text-white">
+                <h3 className="text-xl font-bold mb-2">Modern Banking Facilities</h3>
+                <p className="text-white/90">State-of-the-art branch with secure banking</p>
+              </div>
+            </div>
+            
+            <div className="space-y-6">
+              <Card className="shadow-card hover:shadow-premium transition-all duration-300">
+                <CardHeader>
+                  <div className="flex items-center space-x-3">
+                    <Building2 className="w-8 h-8 text-gold" />
+                    <CardTitle className="text-primary">Nairobi Main Branch</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-muted-foreground">
+                    Laika Plaza, 3rd Floor<br />
+                    Moi Avenue, Nairobi<br />
+                    P.O. Box 12345-00100<br />
+                    Nairobi, Kenya
+                  </p>
+                  <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                    <Phone className="w-4 h-4" />
+                    <span>+254 700 123 456</span>
+                  </div>
+                  <p className="text-sm text-primary font-medium bg-gold/10 px-3 py-1 rounded-full inline-block">
+                    Headquarters & Full Services
+                  </p>
+                  <div className="pt-4">
+                    <Button variant="outline" className="w-full">
+                      <MapPin className="w-4 h-4 mr-2" />
+                      Get Directions
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
