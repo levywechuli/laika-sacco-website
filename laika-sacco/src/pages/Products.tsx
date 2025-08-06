@@ -30,6 +30,29 @@ const Products = () => {
         </div>
       </section>
 
+      {/* Important Banking Information */}
+      <section className="py-8 bg-gradient-primary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+              <h3 className="text-lg font-bold text-white mb-2">💰 DEPOSITS PAYMENT</h3>
+              <p className="text-white font-medium">
+                <strong>Use Business No: 239427</strong><br />
+                <strong>Membership No: as Account No</strong><br />
+                for deposits payment
+              </p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+              <h3 className="text-lg font-bold text-white mb-2">🚀 INSTANT LOANS</h3>
+              <p className="text-white font-medium">
+                <strong>Loan available on short code *483*66#</strong><br />
+                Enter amount and follow prompts to complete
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Savings Products */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,7 +65,44 @@ const Products = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+            {/* Ratiba - New Product */}
+            <Card className="shadow-card hover:shadow-premium transition-all duration-300 hover:-translate-y-2 border-2 border-gold">
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                  <DollarSign className="w-8 h-8 text-white" />
+                </div>
+                <CardTitle className="text-xl text-primary">Ratiba</CardTitle>
+                <Badge variant="outline" className="mx-auto border-gold text-gold">New!</Badge>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-gold">10/=</div>
+                  <p className="text-sm text-muted-foreground">Per Day</p>
+                </div>
+                <p className="text-center text-primary font-medium mb-4">
+                  Saving mode made easy with M-PESA Ratiba as little as 10/= per day
+                </p>
+                <div className="space-y-3 text-sm">
+                  <div className="bg-secondary p-3 rounded-lg">
+                    <p className="font-semibold text-primary mb-1">How to Register:</p>
+                    <p className="text-muted-foreground">*334#, option 9, to pt in select "0"</p>
+                  </div>
+                  <div className="bg-secondary p-3 rounded-lg">
+                    <p className="font-semibold text-primary mb-1">Payment Details:</p>
+                    <p className="text-muted-foreground">
+                      <strong>Paybill No:</strong> 239427<br />
+                      <strong>Account No:</strong> ID No
+                    </p>
+                  </div>
+                </div>
+                <Link to="/membership">
+                  <Button className="w-full mt-6" variant="gold">
+                    Start Ratiba Today
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
             <Card className="shadow-card hover:shadow-premium transition-all duration-300 hover:-translate-y-2">
               <CardHeader className="text-center pb-4">
                 <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">

@@ -74,9 +74,9 @@ const Membership = () => {
                 <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto">
                   <TrendingUp className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-primary">High Returns</h3>
+                <h3 className="text-lg font-semibold text-primary">Sustainable Business Growth</h3>
                 <p className="text-sm text-muted-foreground">
-                  Earn up to 12% annual dividends on your savings
+                  Experience long-term financial stability with our commitment to sustainable growth and sound business practices.
                 </p>
               </CardContent>
             </Card>
@@ -86,9 +86,9 @@ const Membership = () => {
                 <div className="w-16 h-16 bg-gradient-gold rounded-full flex items-center justify-center mx-auto">
                   <CreditCard className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-primary">Easy Loans</h3>
+                <h3 className="text-lg font-semibold text-primary">Competitive Returns on Savings</h3>
                 <p className="text-sm text-muted-foreground">
-                  Access loans up to 3x your savings with competitive rates
+                 Enjoy attractive rates of return on your deposits and shares, designed to maximize your earnings.
                 </p>
               </CardContent>
             </Card>
@@ -98,10 +98,9 @@ const Membership = () => {
                 <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto">
                   <Shield className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-primary">Strong Financial Management</h3>
+                <h3 className="text-lg font-semibold text-primary">Favourable Loan & Savings Products</h3>
                 <p className="text-sm text-muted-foreground">
-                 We ensure sustainability and growth through responsible lending and sound financial practices.
-
+                 Access a wide range of savings and loan products tailored to suit your needs — all offered at member-friendly terms.
                 </p>
               </CardContent>
             </Card>
@@ -111,9 +110,9 @@ const Membership = () => {
                 <div className="w-16 h-16 bg-gradient-gold rounded-full flex items-center justify-center mx-auto">
                   <Award className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-primary">Exclusive Services</h3>
+                <h3 className="text-lg font-semibold text-primary">Enhanced Borrowing Power</h3>
                 <p className="text-sm text-muted-foreground">
-                  Priority banking and personalized financial advisory
+                  Unlock borrowing capacity of up to 3 times your total deposits, empowering you to achieve your financial goals.
                 </p>
               </CardContent>
             </Card>
