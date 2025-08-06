@@ -324,7 +324,7 @@ const Contact = () => {
                 <CardContent className="space-y-4">
                   <p className="text-muted-foreground">
                     Amani house ,2nd Floor<br />
-                    Mukereti , Thika<br />
+                    Mukiriti , Thika<br />
                     P.O Box 3900-01002 <br />
                     Thika, Kenya
                   </p>
@@ -376,7 +376,7 @@ const Contact = () => {
               <CardContent className="space-y-4">
                 <HeadphonesIcon className="w-12 h-12 text-gold mx-auto" />
                 <h3 className="text-xl font-semibold">24/7 Hotline</h3>
-                <p className="text-white/90">+254 700 LAIKA (52452)</p>
+                <p className="text-white/90">+254 700 335 065</p>
                 <p className="text-sm text-white/80">For urgent banking assistance</p>
               </CardContent>
             </Card>
@@ -385,7 +385,7 @@ const Contact = () => {
               <CardContent className="space-y-4">
                 <MessageSquare className="w-12 h-12 text-gold mx-auto" />
                 <h3 className="text-xl font-semibold">WhatsApp Support</h3>
-                <p className="text-white/90">+254 733 987 654</p>
+                <p className="text-white/90">+254 795 900 483</p>
                 <p className="text-sm text-white/80">Quick help via WhatsApp</p>
               </CardContent>
             </Card>
@@ -394,7 +394,7 @@ const Contact = () => {
               <CardContent className="space-y-4">
                 <Mail className="w-12 h-12 text-gold mx-auto" />
                 <h3 className="text-xl font-semibold">Emergency Email</h3>
-                <p className="text-white/90">emergency@laikasacco.co.ke</p>
+                <p className="text-white/90">@Laikasaccosociety@gmail.com</p>
                 <p className="text-sm text-white/80">For critical issues</p>
               </CardContent>
             </Card>

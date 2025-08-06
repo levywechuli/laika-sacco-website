@@ -98,9 +98,10 @@ const Membership = () => {
                 <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto">
                   <Shield className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-primary">Deposit Insurance</h3>
+                <h3 className="text-lg font-semibold text-primary">Strong Financial Management</h3>
                 <p className="text-sm text-muted-foreground">
-                  Your deposits are protected and guaranteed by SASRA
+                 We ensure sustainability and growth through responsible lending and sound financial practices.
+
                 </p>
               </CardContent>
             </Card>
@@ -164,15 +165,15 @@ const Membership = () => {
               <Card className="text-center p-6 shadow-card">
                 <CardContent className="space-y-4">
                   <Users className="w-12 h-12 text-gold mx-auto" />
-                  <div className="text-2xl font-bold text-primary">50K+</div>
+                  <div className="text-2xl font-bold text-primary">1500+</div>
                   <p className="text-sm text-muted-foreground">Happy Members</p>
                 </CardContent>
               </Card>
               <Card className="text-center p-6 shadow-card">
                 <CardContent className="space-y-4">
                   <DollarSign className="w-12 h-12 text-gold mx-auto" />
-                  <div className="text-2xl font-bold text-primary">KES 15B</div>
-                  <p className="text-sm text-muted-foreground">Total Assets</p>
+                  <div className="text-2xl font-bold text-primary">12%</div>
+                  <p className="text-sm text-muted-foreground">Annual dividends</p>
                 </CardContent>
               </Card>
               <Card className="text-center p-6 shadow-card">

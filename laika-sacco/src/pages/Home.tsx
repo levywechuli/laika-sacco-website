@@ -87,9 +87,10 @@ const Home = () => {
                 <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto">
                   <Shield className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-primary">Trusted & Secure</h3>
+                <h3 className="text-xl font-semibold text-primary"> Affordable Loans & Flexible Savings</h3>
                 <p className="text-muted-foreground">
-                  Licensed and regulated by SASRA, ensuring your deposits are safe and secure
+                 Access loans of up to 3× your savings with competitive interest rates, 
+                 and choose from savings products that fit your lifestyle and goals—from emergency funds to long-term investments.
                 </p>
               </CardContent>
             </Card>
@@ -99,9 +100,10 @@ const Home = () => {
                 <div className="w-16 h-16 bg-gradient-gold rounded-full flex items-center justify-center mx-auto">
                   <TrendingUp className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-primary">Withdrawable savings (Jibebe Account)</h3>
+                <h3 className="text-xl font-semibold text-primary"> Easy Access & Fast Processing</h3>
                 <p className="text-muted-foreground">
-                interest ~2% per annum, paid at the end of a 12‑month savings cycle 
+                Enjoy simple contributions via M-PESA, fast loan approvals
+                 (some within 24 hours), and personalized service from our Thika-based team who understand your needs.
                 </p>
               </CardContent>
             </Card>
@@ -113,7 +115,8 @@ const Home = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-primary">Member-Focused</h3>
                 <p className="text-muted-foreground">
-                  Over 50,000 satisfied members enjoying personalized financial solutions
+                  We’re built on trust, transparency, and community values.
+                   Every decision we make prioritizes the financial wellbeing of our members.
                 </p>
               </CardContent>
             </Card>
@@ -139,7 +142,7 @@ const Home = () => {
                 <PiggyBank className="w-12 h-12 text-gold group-hover:scale-110 transition-transform" />
                 <h3 className="text-xl font-semibold text-primary">Savings Accounts</h3>
                 <p className="text-muted-foreground">
-                  Flexible savings plans with competitive interest rates and easy access
+                  Deposit and Share Accounts, Jibebe, Junior Account
                 </p>
                 <Link to="/products" className="inline-flex items-center text-gold font-medium group-hover:underline">
                   Learn More <ArrowRight className="w-4 h-4 ml-1" />
@@ -152,7 +155,7 @@ const Home = () => {
                 <CreditCard className="w-12 h-12 text-gold group-hover:scale-110 transition-transform" />
                 <h3 className="text-xl font-semibold text-primary">Quick Loans</h3>
                 <p className="text-muted-foreground">
-                  Fast loan processing with competitive rates for personal and business needs
+                  Range of loans: Development, School Fees, Emergency, Instant, Karibu, Holiday, Premium, Mobile
                 </p>
                 <Link to="/products" className="inline-flex items-center text-gold font-medium group-hover:underline">
                   Learn More <ArrowRight className="w-4 h-4 ml-1" />
@@ -163,9 +166,9 @@ const Home = () => {
             <Card className="p-6 shadow-card hover:shadow-gold transition-all duration-300 group">
               <CardContent className="space-y-4">
                 <Building2 className="w-12 h-12 text-gold group-hover:scale-110 transition-transform" />
-                <h3 className="text-xl font-semibold text-primary">Business Banking</h3>
+                <h3 className="text-xl font-semibold text-primary"> Member Insurance Scheme</h3>
                 <p className="text-muted-foreground">
-                  Comprehensive business accounts and financial solutions for growth
+                  Loan insurance covers outstanding debt and offers additional deposit protection
                 </p>
                 <Link to="/products" className="inline-flex items-center text-gold font-medium group-hover:underline">
                   Learn More <ArrowRight className="w-4 h-4 ml-1" />

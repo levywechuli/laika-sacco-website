@@ -28,10 +28,11 @@ const About = () => {
               </h2>
               <div className="space-y-6 text-lg text-muted-foreground">
                 <p>
-                  Founded in 1997, Laika SACCO Society Limited emerged from a vision to create 
-                  a financial institution that truly serves the Kenyan community. What started 
-                  as a small cooperative with 100 members has grown into one of Kenya's most 
-                  trusted SACCOs, serving over 50,000 members nationwide.
+                 Laika SACCO Society Ltd began its journey on 9 July 1997, originally registered
+                  as Chania Nursing Home SACCO to serve employees at Del Monte Kenya, the Chania Nursing Home,
+                  and closely related organizations in the informal sector. Over time, as membership expanded 
+                  beyond these groups, the society rebranded to Laika SACCO Society Ltd in September 2014, 
+                  reflecting its evolving identity and broader vision
                 </p>
                 <p>
                   Our name "Laika" means "to flourish" in Swahili, reflecting our core belief 
@@ -55,8 +56,8 @@ const About = () => {
               </Card>
               <Card className="text-center p-6 shadow-card">
                 <CardContent className="space-y-4">
-                  <div className="text-3xl font-bold text-primary">KES 15B</div>
-                  <p className="text-muted-foreground">Total Assets</p>
+                  <div className="text-3xl font-bold text-primary">18%+ Annual Growth</div>
+                  <p className="text-muted-foreground">Percentage Growth</p>
                 </CardContent>
               </Card>
               <Card className="text-center p-6 shadow-card">
@@ -119,9 +120,9 @@ const About = () => {
                 <div className="text-muted-foreground text-left">
                   <ul className="space-y-2">
                     <li>• <strong>Integrity:</strong> Honest and transparent dealings</li>
-                    <li>• <strong>Excellence:</strong> Delivering superior service</li>
-                    <li>• <strong>Innovation:</strong> Embracing modern solutions</li>
-                    <li>• <strong>Member-First:</strong> Your success is our priority</li>
+                    <li>• <strong>Tranparency:</strong> Open communication and clear operations</li>
+                    <li>• <strong>Honesty:</strong> Truthful and sincere service</li>
+                    <li>• <strong>Efficiency: </strong> Fast and reliable service</li>
                   </ul>
                 </div>
               </CardContent>
