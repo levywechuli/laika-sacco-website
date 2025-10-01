@@ -1,8 +1,9 @@
 const express = require('express');
 const { body, validationResult } = require('express-validator');
 const MembershipApplication = require('../models/MembershipApplication');
+const User = require('../models/User'); // ✅ added
 const auth = require('../middleware/auth');
-const sendEmail = require('../utils/email');
+const sendEmail = require('../utilis/email');
 
 const router = express.Router();
 
@@ -56,7 +57,6 @@ router.post('/apply', [
             <li>Phone: ${application.phone}</li>
           </ul>
           <p>Our team will review your application and get back to you within 3-5 business days.</p>
-          <p>If you have any questions, please contact us at info@laikasacco.com or call us at +254 700 000 000.</p>
           <br>
           <p>Best regards,<br>Laika SACCO Team</p>
         `
@@ -78,7 +78,6 @@ router.post('/apply', [
 // Get all applications (admin only)
 router.get('/applications', auth, async (req, res) => {
   try {
-    // This would need admin role check in a real app
     const applications = await MembershipApplication.find()
       .sort({ createdAt: -1 })
       .limit(50);
@@ -139,19 +138,51 @@ router.patch('/applications/:id/status', auth, [
     let emailContent = '';
     
     switch (status) {
-      case 'approved':
+      case 'approved': {
         emailSubject = 'Membership Application Approved - Welcome to Laika SACCO';
+
+        // ✅ Create User if not exists
+        let user = await User.findOne({ email: application.email });
+        let tempPassword;
+
+        if (!user) {
+          tempPassword = Math.random().toString(36).slice(-10) + 'A1!';
+          user = new User({
+            email: application.email,
+            password: tempPassword,
+            firstName: application.firstName,
+            lastName: application.lastName,
+            phone: application.phone,
+            membershipStatus: 'active',
+            role: 'member'
+          });
+          await user.save();
+        } else {
+          if (user.membershipStatus !== 'active') {
+            user.membershipStatus = 'active';
+            await user.save();
+          }
+        }
+
         emailContent = `
           <h2>Congratulations ${application.firstName}!</h2>
-          <p>Your membership application has been approved. Welcome to Laika SACCO!</p>
-          <p>Next steps:</p>
-          <ul>
-            <li>Visit our office to complete your membership registration</li>
-            <li>Bring your original ID and other required documents</li>
-            <li>Make your initial share capital deposit</li>
-          </ul>
+          <p>Your membership application has been approved and your account is active.</p>
+          ${tempPassword ? `
+            <p><strong>Login details:</strong></p>
+            <ul>
+              <li>Email: ${user.email}</li>
+              <li>Temporary password: <strong>${tempPassword}</strong></li>
+            </ul>
+            <p>Please login and change your password immediately.</p>
+          ` : `
+            <p>You can now log in with your existing account credentials.</p>
+          `}
+          <p>Your membership number is: <strong>${user.membershipNumber}</strong></p>
+          <br/>
+          <p>Best regards,<br/>Laika SACCO Team</p>
         `;
         break;
+      }
       case 'rejected':
         emailSubject = 'Membership Application Update - Laika SACCO';
         emailContent = `

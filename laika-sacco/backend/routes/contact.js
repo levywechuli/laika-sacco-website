@@ -1,7 +1,6 @@
 const express = require('express');
 const { body, validationResult } = require('express-validator');
-const sendEmail = require('../utils/email');
-
+const sendEmail = require('../utilis/email');
 const router = express.Router();
 
 // Submit contact form

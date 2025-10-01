@@ -246,7 +246,7 @@ const News = () => {
             <Card className="text-center p-6 shadow-card">
               <CardContent className="space-y-2">
                 <Users className="w-8 h-8 text-gold mx-auto" />
-                <div className="text-2xl font-bold text-primary">50,000+</div>
+                <div className="text-2xl font-bold text-primary">400+</div>
                 <p className="text-sm text-muted-foreground">Active Members</p>
               </CardContent>
             </Card>
@@ -254,8 +254,9 @@ const News = () => {
             <Card className="text-center p-6 shadow-card">
               <CardContent className="space-y-2">
                 <TrendingUp className="w-8 h-8 text-gold mx-auto" />
-                <div className="text-2xl font-bold text-primary">KES 15B</div>
-                <p className="text-sm text-muted-foreground">Total Assets</p>
+                <div className="text-2xl font-bold text-primary">18%+ Annual Growth</div>
+
+                <p className="text-sm text-muted-foreground">Percentage Growth</p>
               </CardContent>
             </Card>
 
@@ -270,7 +271,7 @@ const News = () => {
             <Card className="text-center p-6 shadow-card">
               <CardContent className="space-y-2">
                 <Calendar className="w-8 h-8 text-gold mx-auto" />
-                <div className="text-2xl font-bold text-primary">14</div>
+                <div className="text-2xl font-bold text-primary">28</div>
                 <p className="text-sm text-muted-foreground">Years of Service</p>
               </CardContent>
             </Card>

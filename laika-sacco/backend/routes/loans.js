@@ -2,7 +2,7 @@ const express = require('express');
 const { body, validationResult } = require('express-validator');
 const LoanApplication = require('../models/LoanApplication');
 const auth = require('../middleware/auth');
-const sendEmail = require('../utils/email');
+const sendEmail = require('../utilis/email');
 
 const router = express.Router();
 

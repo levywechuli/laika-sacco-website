@@ -1,11 +1,12 @@
+// backend/utilis/email.js
 const nodemailer = require('nodemailer');
 
-// Create transporter
 const createTransporter = () => {
-  return nodemailer.createTransporter({
+  // Note: ensure process.env.EMAIL_HOST and EMAIL_PORT are set correctly
+  return nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
-    port: process.env.EMAIL_PORT,
-    secure: false, // true for 465, false for other ports
+    port: Number(process.env.EMAIL_PORT) || 587,
+    secure: process.env.EMAIL_PORT == '465', // true for 465, false otherwise
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
@@ -13,11 +14,9 @@ const createTransporter = () => {
   });
 };
 
-// Send email function
 const sendEmail = async ({ to, subject, text, html }) => {
   try {
     const transporter = createTransporter();
-    
     const mailOptions = {
       from: `"Laika SACCO" <${process.env.EMAIL_USER}>`,
       to,
