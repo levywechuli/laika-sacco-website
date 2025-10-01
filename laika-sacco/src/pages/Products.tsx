@@ -303,9 +303,11 @@ const Products = () => {
                     <span className="text-sm">Four guarantors required</span>
                   </li>
                 </ul>
-                <Button className="w-full" variant="premium">
-                  Apply Now
-                </Button>
+                <Link to="/loan-application">
+                  <Button className="w-full" variant="premium">
+                    Apply Now
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -353,9 +355,11 @@ const Products = () => {
                     <span className="text-sm">For urgent occurrences</span>
                   </li>
                 </ul>
-                <Button className="w-full" variant="gold">
-                  Apply Now
-                </Button>
+                <Link to="/loan-application">
+                  <Button className="w-full" variant="gold">
+                    Apply Now
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -403,9 +407,11 @@ const Products = () => {
                     <span className="text-sm">Alongside other loans</span>
                   </li>
                 </ul>
-                <Button className="w-full" variant="premium">
-                  Apply Now
-                </Button>
+                <Link to="/loan-application">
+                  <Button className="w-full" variant="premium">
+                    Apply Now
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -453,9 +459,11 @@ const Products = () => {
                     <span className="text-sm">Interest paid upfront</span>
                   </li>
                 </ul>
-                <Button className="w-full" variant="gold">
-                  Apply Now
-                </Button>
+                <Link to="/loan-application">
+                  <Button className="w-full" variant="gold">
+                    Apply Now
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -503,9 +511,11 @@ const Products = () => {
                     <span className="text-sm">Interest paid upfront</span>
                   </li>
                 </ul>
-                <Button className="w-full" variant="premium">
-                  Apply Now
-                </Button>
+                <Link to="/loan-application">
+                  <Button className="w-full" variant="premium">
+                    Apply Now
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -553,9 +563,11 @@ const Products = () => {
                     <span className="text-sm">Interest paid upfront</span>
                   </li>
                 </ul>
-                <Button className="w-full" variant="gold">
-                  Apply Now
-                </Button>
+                <Link to="/loan-application">
+                  <Button className="w-full" variant="gold">
+                    Apply Now
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -603,9 +615,11 @@ const Products = () => {
                     <span className="text-sm">1/3 retained as deposits</span>
                   </li>
                 </ul>
-                <Button className="w-full" variant="premium">
-                  Apply Now
-                </Button>
+                <Link to="/loan-application">
+                  <Button className="w-full" variant="premium">
+                    Apply Now
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </div>

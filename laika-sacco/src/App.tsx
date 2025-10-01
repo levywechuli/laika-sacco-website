@@ -12,6 +12,7 @@ import News from "./pages/News";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Banking from "./pages/Banking";
+import LoanApplication from "./pages/LoanApplication";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/banking" element={<Banking />} />
+            <Route path="/loan-application" element={<LoanApplication />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>

@@ -12,7 +12,9 @@ const Footer = () => {
           <div className="col-span-1 lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
               <div className="w-12 h-12 bg-gold rounded-lg flex items-center justify-center">
-                <Shield className="w-7 h-7 text-white" />
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-white">
+                 <img src="/logo.png/Pasted image.png"  alt="Laika SACCO Logo" className="w-10 h-10 object-contain" />
+              </div>
               </div>
               <div>
                 <h3 className="text-2xl font-bold font-serif">Laika SACCO</h3>
@@ -93,7 +95,7 @@ const Footer = () => {
         <div className="py-6 border-t border-primary-light">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-primary-foreground/80 text-sm">
-              © 2024 Laika SACCO Society Limited. All rights reserved.
+              © 2025 Laika SACCO Society Limited. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="#" className="text-primary-foreground/80 hover:text-gold text-sm transition-colors">Privacy Policy</a>
