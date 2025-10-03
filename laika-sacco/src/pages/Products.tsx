@@ -96,7 +96,7 @@ const Products = () => {
                     </p>
                   </div>
                 </div>
-                <Link to="/membership">
+                <Link to="/ratiba">
                   <Button className="w-full mt-6" variant="gold">
                     Start Ratiba Today
                   </Button>
@@ -303,7 +303,7 @@ const Products = () => {
                     <span className="text-sm">Four guarantors required</span>
                   </li>
                 </ul>
-                <Link to="/loan-application">
+                <Link to="/loan-application/development">
                   <Button className="w-full" variant="premium">
                     Apply Now
                   </Button>
@@ -355,7 +355,7 @@ const Products = () => {
                     <span className="text-sm">For urgent occurrences</span>
                   </li>
                 </ul>
-                <Link to="/loan-application">
+                <Link to="/loan-application/emergency">
                   <Button className="w-full" variant="gold">
                     Apply Now
                   </Button>
@@ -407,7 +407,7 @@ const Products = () => {
                     <span className="text-sm">Alongside other loans</span>
                   </li>
                 </ul>
-                <Link to="/loan-application">
+                <Link to="/loan-application/school-fee">
                   <Button className="w-full" variant="premium">
                     Apply Now
                   </Button>
@@ -459,7 +459,7 @@ const Products = () => {
                     <span className="text-sm">Interest paid upfront</span>
                   </li>
                 </ul>
-                <Link to="/loan-application">
+                <Link to="/loan-application/instant">
                   <Button className="w-full" variant="gold">
                     Apply Now
                   </Button>
@@ -511,7 +511,7 @@ const Products = () => {
                     <span className="text-sm">Interest paid upfront</span>
                   </li>
                 </ul>
-                <Link to="/loan-application">
+                <Link to="/loan-application/okoa-siku">
                   <Button className="w-full" variant="premium">
                     Apply Now
                   </Button>
@@ -563,7 +563,7 @@ const Products = () => {
                     <span className="text-sm">Interest paid upfront</span>
                   </li>
                 </ul>
-                <Link to="/loan-application">
+                <Link to="/loan-application/holiday">
                   <Button className="w-full" variant="gold">
                     Apply Now
                   </Button>
@@ -615,7 +615,7 @@ const Products = () => {
                     <span className="text-sm">1/3 retained as deposits</span>
                   </li>
                 </ul>
-                <Link to="/loan-application">
+                <Link to="/loan-application/karibu">
                   <Button className="w-full" variant="premium">
                     Apply Now
                   </Button>

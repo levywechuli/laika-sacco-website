@@ -2,19 +2,61 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Download, FileText, CheckCircle, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+
+const loanTypes = {
+  development: {
+    name: 'Development Loan',
+    formUrl: '/public/uploads/development-loan-form.pdf',
+    description: 'Finance your development projects with our flexible terms'
+  },
+  emergency: {
+    name: 'Emergency Loan',
+    formUrl: '/public/uploads/EMERGENCY LOAN APPLICATION FORM.pdf',
+    description: 'Get urgent financial assistance within 24 hours'
+  },
+  'school-fee': {
+    name: 'School Fee Loan',
+    formUrl: '/public/uploads/SCHOOL FEES LOAN FORM.pdf',
+    description: 'Ensure your children\'s education is never interrupted'
+  },
+  instant: {
+    name: 'Instant Loan',
+    formUrl: '/public/uploads/INSTANT  LOAN APPLICATION FORM.pdf',
+    description: 'Quick cash via M-PESA processed as you wait'
+  },
+  'okoa-siku': {
+    name: 'Okoa Siku Loan',
+    formUrl: '/public/uploads/OKOA SIKU LOAN FORM.pdf',
+    description: 'Short-term financial rescue for urgent needs'
+  },
+  holiday: {
+    name: 'Holiday Loan',
+    formUrl: '/public/uploads/HOLIDAY LOAN FORM (1).pdf',
+    description: 'Enjoy your holidays without financial stress'
+  },
+  karibu: {
+    name: 'Karibu Loan',
+    formUrl: '/public/uploads/KARIBU LOAN APPLICATION FORM 1.pdf',
+    description: 'Welcome loan for new check-off members'
+  }
+};
 
 const LoanApplication = () => {
+  const { loanType } = useParams<{ loanType: string }>();
+  const loan = loanType && loanTypes[loanType as keyof typeof loanTypes] 
+    ? loanTypes[loanType as keyof typeof loanTypes]
+    : loanTypes.development;
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-primary text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold font-serif mb-6">
-            Loan Application
+            {loan.name} Application
           </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto">
-            Download and complete the loan application form to start your journey
+            {loan.description}
           </p>
         </div>
       </section>
@@ -32,7 +74,7 @@ const LoanApplication = () => {
               <div className="w-20 h-20 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
                 <FileText className="w-10 h-10 text-white" />
               </div>
-              <CardTitle className="text-3xl text-primary mb-2">Loan Application Form</CardTitle>
+              <CardTitle className="text-3xl text-primary mb-2">{loan.name} Application Form</CardTitle>
               <p className="text-muted-foreground">
                 Download the form, fill it out, and submit it at our office
               </p>
@@ -82,8 +124,8 @@ const LoanApplication = () => {
                   asChild
                 >
                   <a 
-                    href="/public/lovable-uploads/8dc1616e-3ba4-4bd0-ba5f-b2f7d48b4741.png" 
-                    download="Loan-Application-Form.pdf"
+                    href={loan.formUrl} 
+                    download={`${loan.name.replace(/\s+/g, '-')}-Application-Form.pdf`}
                   >
                     <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
                     Download Application Form
@@ -104,7 +146,7 @@ const LoanApplication = () => {
                   </li>
                   <li className="flex items-center space-x-2">
                     <CheckCircle className="w-4 h-4 text-success" />
-                    <span className="text-sm">Recent payslips (1 month)</span>
+                    <span className="text-sm">Recent payslips (3 months)</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <CheckCircle className="w-4 h-4 text-success" />
@@ -132,3 +174,4 @@ const LoanApplication = () => {
 };
 
 export default LoanApplication;
+

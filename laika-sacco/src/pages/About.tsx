@@ -50,7 +50,7 @@ const About = () => {
             <div className="grid grid-cols-2 gap-6">
               <Card className="text-center p-6 shadow-card">
                 <CardContent className="space-y-4">
-                  <div className="text-3xl font-bold text-primary">1500+</div>
+                  <div className="text-3xl font-bold text-primary">1600+</div>
                   <p className="text-muted-foreground">Members</p>
                 </CardContent>
               </Card>
