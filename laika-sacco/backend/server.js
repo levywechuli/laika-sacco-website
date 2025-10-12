@@ -70,11 +70,9 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// ✅ 404 Handler (for undefined routes)
-app.use('*', (req, res) => {
-  res.status(404).json({
-    message: 'Route not found',
-  });
+// ✅ 404 Handler
+app.use((req, res) => {
+  res.status(404).json({ message: 'Route not found' });
 });
 
 // ✅ Start Server
