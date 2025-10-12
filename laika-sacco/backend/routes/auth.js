@@ -64,10 +64,12 @@ router.post('/register', [
   }
 });
 
-// Login
+
+// 🔹 UPDATED LOGIN ROUTE
 router.post('/login', [
-  body('email').isEmail().normalizeEmail(),
-  body('password').notEmpty()
+  body('memberNumber').optional().trim(),
+  body('email').optional().isEmail().normalizeEmail(),
+  body('password').notEmpty().withMessage('Password is required')
 ], async (req, res) => {
   try {
     const errors = validationResult(req);
@@ -75,10 +77,16 @@ router.post('/login', [
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { email, password } = req.body;
+    const { memberNumber, email, password } = req.body;
 
-    // Find user
-    const user = await User.findOne({ email });
+    // Find user by member number OR email
+    const user = await User.findOne({
+      $or: [
+        { membershipNumber: memberNumber },
+        { email: email }
+      ]
+    });
+
     if (!user) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
@@ -95,7 +103,7 @@ router.post('/login', [
 
     // Generate JWT token
     const token = jwt.sign(
-      { userId: user._id, email: user.email },
+      { userId: user._id, email: user.email, role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: '7d' }
     );
@@ -119,6 +127,7 @@ router.post('/login', [
   }
 });
 
+
 // Get current user profile
 router.get('/profile', auth, async (req, res) => {
   try {
@@ -129,6 +138,7 @@ router.get('/profile', auth, async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
 
 // Update profile
 router.put('/profile', auth, [
@@ -143,9 +153,9 @@ router.put('/profile', auth, [
     }
 
     const updates = req.body;
-    delete updates.password; // Prevent password updates through this route
-    delete updates.email; // Prevent email updates
-    delete updates.role; // Prevent role updates
+    delete updates.password;
+    delete updates.email;
+    delete updates.role;
 
     const user = await User.findByIdAndUpdate(
       req.user.userId,
