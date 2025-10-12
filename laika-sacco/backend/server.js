@@ -70,4 +70,15 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// ✅ 404 Handl
+// ✅ 404 Handler (for undefined routes)
+app.use('*', (req, res) => {
+  res.status(404).json({
+    message: 'Route not found',
+  });
+});
+
+// ✅ Start Server
+app.listen(PORT, () => {
+  console.log(`🚀 Laika SACCO backend running on port ${PORT}`);
+});
+
