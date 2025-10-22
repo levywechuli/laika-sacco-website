@@ -7,58 +7,23 @@ import { Shield, Eye, EyeOff, Smartphone, CreditCard, Lock, User } from 'lucide-
 import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
   const navigate = useNavigate();
-
+  const [showPassword, setShowPassword] = useState(false);
   const [loginData, setLoginData] = useState({
     memberNumber: '',
     password: ''
   });
 
-  const handleInputChange = (field, value) => {
+  const handleInputChange = (field: string, value: string) => {
     setLoginData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    setError("");
-
-    try {
-      // ✅ Send login request to your backend
-      const response = await fetch(
-        "https://laika-sacco-backend.onrender.com/api/auth/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            membershipNumber: loginData.memberNumber,
-            password: loginData.password,
-          }),
-        }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || "Invalid credentials");
-      }
-
-      // ✅ Save token + user data to localStorage
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
-
-      // ✅ Redirect to dashboard
-      navigate("/dashboard");
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
+    // Mock login - set logged in flag and redirect to dashboard
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('memberNumber', loginData.memberNumber);
+    navigate('/dashboard');
   };
 
   return (
@@ -88,12 +53,6 @@ const Login = () => {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
-              {error && (
-                <p className="text-center text-red-500 bg-red-50 py-2 rounded-md">
-                  {error}
-                </p>
-              )}
-
               <div className="space-y-2">
                 <Label htmlFor="memberNumber">Member Number</Label>
                 <div className="relative">
@@ -102,9 +61,7 @@ const Login = () => {
                     id="memberNumber"
                     type="text"
                     value={loginData.memberNumber}
-                    onChange={(e) =>
-                      handleInputChange('memberNumber', e.target.value)
-                    }
+                    onChange={(e) => handleInputChange('memberNumber', e.target.value)}
                     className="pl-10"
                     placeholder="Enter your member number"
                     required
@@ -118,11 +75,9 @@ const Login = () => {
                   <Lock className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
                   <Input
                     id="password"
-                    type={showPassword ? 'text' : 'password'}
+                    type={showPassword ? "text" : "password"}
                     value={loginData.password}
-                    onChange={(e) =>
-                      handleInputChange('password', e.target.value)
-                    }
+                    onChange={(e) => handleInputChange('password', e.target.value)}
                     className="pl-10 pr-10"
                     placeholder="Enter your password"
                     required
@@ -140,26 +95,15 @@ const Login = () => {
               <div className="flex items-center justify-between">
                 <label className="flex items-center">
                   <input type="checkbox" className="mr-2" />
-                  <span className="text-sm text-muted-foreground">
-                    Remember me
-                  </span>
+                  <span className="text-sm text-muted-foreground">Remember me</span>
                 </label>
-                <button
-                  type="button"
-                  className="text-sm text-gold hover:text-gold-dark"
-                >
+                <button type="button" className="text-sm text-gold hover:text-gold-dark">
                   Forgot password?
                 </button>
               </div>
 
-              <Button
-                type="submit"
-                variant="premium"
-                size="lg"
-                className="w-full"
-                disabled={loading}
-              >
-                {loading ? 'Signing in...' : 'Sign In'}
+              <Button type="submit" variant="premium" size="lg" className="w-full">
+                Sign In
               </Button>
             </form>
 
@@ -169,9 +113,7 @@ const Login = () => {
                   <div className="w-full border-t border-border" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-card text-muted-foreground">
-                    Alternative Login
-                  </span>
+                  <span className="px-2 bg-card text-muted-foreground">Alternative Login</span>
                 </div>
               </div>
 
@@ -190,10 +132,7 @@ const Login = () => {
             <div className="mt-6 text-center">
               <p className="text-sm text-muted-foreground">
                 Not a member yet?{' '}
-                <Link
-                  to="/membership"
-                  className="text-gold hover:text-gold-dark font-medium"
-                >
+                <Link to="/membership" className="text-gold hover:text-gold-dark font-medium">
                   Join Laika SACCO
                 </Link>
               </p>
@@ -207,13 +146,10 @@ const Login = () => {
             <div className="flex items-start space-x-3">
               <Shield className="w-5 h-5 text-primary mt-0.5" />
               <div>
-                <h4 className="text-sm font-semibold text-primary">
-                  Security Notice
-                </h4>
+                <h4 className="text-sm font-semibold text-primary">Security Notice</h4>
                 <p className="text-xs text-muted-foreground mt-1">
-                  Never share your login details. Always log out when using
-                  public computers. Our support team will never ask for your
-                  password.
+                  Never share your login details. Always log out when using public computers.
+                  Our support team will never ask for your password.
                 </p>
               </div>
             </div>
@@ -228,9 +164,13 @@ const Login = () => {
               Contact Support
             </Link>
             <span className="text-muted-foreground">•</span>
-            <button className="text-gold hover:text-gold-dark">User Guide</button>
+            <button className="text-gold hover:text-gold-dark">
+              User Guide
+            </button>
             <span className="text-muted-foreground">•</span>
-            <button className="text-gold hover:text-gold-dark">FAQs</button>
+            <button className="text-gold hover:text-gold-dark">
+              FAQs
+            </button>
           </div>
         </div>
       </div>

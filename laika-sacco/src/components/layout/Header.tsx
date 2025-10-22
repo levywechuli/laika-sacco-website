@@ -1,11 +1,26 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, User, Shield } from 'lucide-react';
+import { Menu, X, User, Shield, LayoutDashboard, LogOut } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check login status
+    const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    setIsLoggedIn(loggedIn);
+  }, [location]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('memberNumber');
+    setIsLoggedIn(false);
+    navigate('/');
+  };
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -25,12 +40,12 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img 
-              src="/logo.png/Pasted image.png" 
+              src="/logo.png" 
               alt="Laika Savings & Credit Cooperative Society Ltd" 
               className="h-12 w-auto"
             />
             <div>
-              <h1 className="text-xl font-bold font-serif text-primary">Laika Sacco</h1>
+              <h1 className="text-xl font-bold font-serif text-primary">Laika SACCO</h1>
               <p className="text-xs text-muted-foreground">Society Limited</p>
             </div>
           </Link>
@@ -54,17 +69,34 @@ const Header = () => {
 
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Link to="/login">
-              <Button variant="outline" size="sm">
-                <User className="w-4 h-4 mr-2" />
-                Member Login
-              </Button>
-            </Link>
-            <Link to="/banking">
-              <Button variant="gold" size="sm">
-                Online Banking
-              </Button>
-            </Link>
+            {isLoggedIn ? (
+              <>
+                <Link to="/dashboard">
+                  <Button variant="outline" size="sm">
+                    <LayoutDashboard className="w-4 h-4 mr-2" />
+                    Dashboard
+                  </Button>
+                </Link>
+                <Button variant="gold" size="sm" onClick={handleLogout}>
+                  <LogOut className="w-4 h-4 mr-2" />
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link to="/login">
+                  <Button variant="outline" size="sm">
+                    <User className="w-4 h-4 mr-2" />
+                    Member Login
+                  </Button>
+                </Link>
+                <Link to="/banking">
+                  <Button variant="gold" size="sm">
+                    Online Banking
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -95,17 +127,42 @@ const Header = () => {
                 </Link>
               ))}
               <div className="pt-4 space-y-2">
-                <Link to="/login" onClick={() => setIsMenuOpen(false)}>
-                  <Button variant="outline" size="sm" className="w-full">
-                    <User className="w-4 h-4 mr-2" />
-                    Member Login
-                  </Button>
-                </Link>
-                <Link to="/banking" onClick={() => setIsMenuOpen(false)}>
-                  <Button variant="gold" size="sm" className="w-full">
-                    Online Banking
-                  </Button>
-                </Link>
+                {isLoggedIn ? (
+                  <>
+                    <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>
+                      <Button variant="outline" size="sm" className="w-full">
+                        <LayoutDashboard className="w-4 h-4 mr-2" />
+                        Dashboard
+                      </Button>
+                    </Link>
+                    <Button 
+                      variant="gold" 
+                      size="sm" 
+                      className="w-full"
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        handleLogout();
+                      }}
+                    >
+                      <LogOut className="w-4 h-4 mr-2" />
+                      Logout
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+                      <Button variant="outline" size="sm" className="w-full">
+                        <User className="w-4 h-4 mr-2" />
+                        Member Login
+                      </Button>
+                    </Link>
+                    <Link to="/banking" onClick={() => setIsMenuOpen(false)}>
+                      <Button variant="gold" size="sm" className="w-full">
+                        Online Banking
+                      </Button>
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </div>
