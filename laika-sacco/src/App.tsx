@@ -14,6 +14,7 @@ import Login from "./pages/Login";
 import Banking from "./pages/Banking";
 import LoanApplication from "./pages/LoanApplication";
 import Ratiba from "./pages/Ratiba";
+import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/banking" element={<Banking />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/loan-application/:loanType" element={<LoanApplication />} />
             <Route path="/ratiba" element={<Ratiba />} />
             <Route path="*" element={<NotFound />} />
@@ -45,3 +47,4 @@ const App = () => (
 );
 
 export default App;
+
