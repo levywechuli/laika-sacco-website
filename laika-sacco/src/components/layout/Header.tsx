@@ -40,7 +40,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img 
-              src="/logo.png" 
+              src="/logo.png/Pasted image.png" 
               alt="Laika Savings & Credit Cooperative Society Ltd" 
               className="h-12 w-auto"
             />
