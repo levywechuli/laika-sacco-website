@@ -1,29 +1,60 @@
 import React, { useState } from 'react';
+import { Shield, Eye, EyeOff, Lock, User } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Shield, Eye, EyeOff, Smartphone, CreditCard, Lock, User } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [loginData, setLoginData] = useState({
-    memberNumber: '',
-    password: ''
+    membershipNumber: '',
+    password: '',
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
+  // Handle input changes
   const handleInputChange = (field: string, value: string) => {
-    setLoginData(prev => ({ ...prev, [field]: value }));
+    setLoginData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Handle form submit
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Mock login - set logged in flag and redirect to dashboard
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('memberNumber', loginData.memberNumber);
-    navigate('/dashboard');
+    setLoading(true);
+    setError('');
+
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          membershipNumber: loginData.membershipNumber,
+          password: loginData.password,
+        }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message || 'Login failed');
+
+      // ✅ Save login info
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('membershipNumber', loginData.membershipNumber);
+      localStorage.setItem('isLoggedIn', 'true'); // 🔥 this line makes Header update
+
+      // ✅ Trigger update for Header immediately
+      window.dispatchEvent(new Event('storage'));
+
+      // ✅ Redirect to Dashboard
+      navigate('/dashboard');
+    } catch (error: any) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -36,9 +67,7 @@ const Login = () => {
               <Shield className="w-8 h-8 text-white" />
             </div>
           </div>
-          <h2 className="text-3xl font-bold font-serif text-primary">
-            Member Login
-          </h2>
+          <h2 className="text-3xl font-bold font-serif text-primary">Member Login</h2>
           <p className="mt-2 text-sm text-muted-foreground">
             Access your Laika SACCO account securely
           </p>
@@ -51,33 +80,40 @@ const Login = () => {
               Welcome Back
             </CardTitle>
           </CardHeader>
+
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Membership Number */}
               <div className="space-y-2">
-                <Label htmlFor="memberNumber">Member Number</Label>
+                <Label htmlFor="membershipNumber">Membership Number</Label>
                 <div className="relative">
                   <User className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
                   <Input
-                    id="memberNumber"
+                    id="membershipNumber"
                     type="text"
-                    value={loginData.memberNumber}
-                    onChange={(e) => handleInputChange('memberNumber', e.target.value)}
+                    value={loginData.membershipNumber}
+                    onChange={(e) =>
+                      handleInputChange('membershipNumber', e.target.value)
+                    }
                     className="pl-10"
-                    placeholder="Enter your member number"
+                    placeholder="Enter your membership number"
                     required
                   />
                 </div>
               </div>
 
+              {/* Password */}
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
                   <Input
                     id="password"
-                    type={showPassword ? "text" : "password"}
+                    type={showPassword ? 'text' : 'password'}
                     value={loginData.password}
-                    onChange={(e) => handleInputChange('password', e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange('password', e.target.value)
+                    }
                     className="pl-10 pr-10"
                     placeholder="Enter your password"
                     required
@@ -92,55 +128,25 @@ const Login = () => {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between">
-                <label className="flex items-center">
-                  <input type="checkbox" className="mr-2" />
-                  <span className="text-sm text-muted-foreground">Remember me</span>
-                </label>
-                <button type="button" className="text-sm text-gold hover:text-gold-dark">
-                  Forgot password?
-                </button>
-              </div>
+              {/* Error Message */}
+              {error && (
+                <p className="text-red-500 text-center text-sm">{error}</p>
+              )}
 
-              <Button type="submit" variant="premium" size="lg" className="w-full">
-                Sign In
+              {/* Submit Button */}
+              <Button
+                type="submit"
+                variant="premium"
+                size="lg"
+                className="w-full"
+                disabled={loading}
+              >
+                {loading ? 'Signing in...' : 'Sign In'}
               </Button>
             </form>
-
-            <div className="mt-6 space-y-4">
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-border" />
-                </div>
-                <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-card text-muted-foreground">Alternative Login</span>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                <Button variant="outline" className="w-full">
-                  <Smartphone className="w-4 h-4 mr-2" />
-                  SMS Login
-                </Button>
-                <Button variant="outline" className="w-full">
-                  <CreditCard className="w-4 h-4 mr-2" />
-                  Card PIN
-                </Button>
-              </div>
-            </div>
-
-            <div className="mt-6 text-center">
-              <p className="text-sm text-muted-foreground">
-                Not a member yet?{' '}
-                <Link to="/membership" className="text-gold hover:text-gold-dark font-medium">
-                  Join Laika SACCO
-                </Link>
-              </p>
-            </div>
           </CardContent>
         </Card>
 
-        {/* Security Notice */}
         <Card className="bg-gradient-to-r from-primary/5 to-gold/5 border-primary/20">
           <CardContent className="p-4">
             <div className="flex items-start space-x-3">
@@ -155,24 +161,6 @@ const Login = () => {
             </div>
           </CardContent>
         </Card>
-
-        {/* Help Links */}
-        <div className="text-center space-y-2">
-          <p className="text-sm text-muted-foreground">Need help?</p>
-          <div className="flex justify-center space-x-4 text-sm">
-            <Link to="/contact" className="text-gold hover:text-gold-dark">
-              Contact Support
-            </Link>
-            <span className="text-muted-foreground">•</span>
-            <button className="text-gold hover:text-gold-dark">
-              User Guide
-            </button>
-            <span className="text-muted-foreground">•</span>
-            <button className="text-gold hover:text-gold-dark">
-              FAQs
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );

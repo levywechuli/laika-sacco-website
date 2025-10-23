@@ -1,69 +1,55 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
+const loanSchema = new mongoose.Schema({
+  name: { type: String, required: true },         // e.g., "Normal Loan"
+  balance: { type: Number, default: 0 },          // e.g., 150000
+  limit: { type: Number, default: 0 },            // e.g., 200000
+  status: { type: String, enum: ['Active', 'Available'], default: 'Available' }
+});
+
+const savingSchema = new mongoose.Schema({
+  name: { type: String, required: true },         // e.g., "Deposits"
+  balance: { type: Number, default: 0 }           // e.g., 45750
+});
+
 const userSchema = new mongoose.Schema({
-  email: {
+  // Login credentials
+  membershipNumber: {
     type: String,
     required: true,
     unique: true,
-    lowercase: true,
     trim: true
   },
+
   password: {
     type: String,
     required: true,
     minlength: 6
   },
-  firstName: {
+
+  // Personal info
+  fullName: {
     type: String,
-    required: true,
-    trim: true
+    
   },
-  lastName: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  phone: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  membershipNumber: {
-    type: String,
-    unique: true,
-    sparse: true
-  },
-  role: {
-    type: String,
-    enum: ['member', 'admin', 'staff'],
-    default: 'member'
-  },
+
+  // Financial data
+  savingsProducts: [savingSchema],   // e.g. Deposits, Jibebe, Share Capital
+  loanProducts: [loanSchema],        // e.g. Normal Loan, Emergency Loan, etc.
+
   membershipStatus: {
     type: String,
-    enum: ['pending', 'active', 'suspended', 'inactive'],
-    default: 'pending'
+    enum: ['active', 'pending', 'suspended', 'inactive'],
+    default: 'active'
   },
-  dateJoined: {
-    type: Date,
-    default: Date.now
-  },
-  lastLogin: Date,
-  isEmailVerified: {
-    type: Boolean,
-    default: false
-  },
-  emailVerificationToken: String,
-  passwordResetToken: String,
-  passwordResetExpires: Date
-}, {
-  timestamps: true
-});
+
+  lastLogin: Date
+}, { timestamps: true });
 
 // Hash password before saving
 userSchema.pre('save', async function(next) {
   if (!this.isModified('password')) return next();
-  
   try {
     const salt = await bcrypt.genSalt(12);
     this.password = await bcrypt.hash(this.password, salt);
@@ -73,18 +59,12 @@ userSchema.pre('save', async function(next) {
   }
 });
 
-// Compare password method
+// Compare passwords
 userSchema.methods.comparePassword = async function(candidatePassword) {
   return await bcrypt.compare(candidatePassword, this.password);
 };
 
-// Generate membership number
-userSchema.pre('save', async function(next) {
-  if (!this.membershipNumber && this.membershipStatus === 'active') {
-    const count = await mongoose.model('User').countDocuments();
-    this.membershipNumber = `LSL${String(count + 1).padStart(6, '0')}`;
-  }
-  next();
-});
-
 module.exports = mongoose.model('User', userSchema);
+
+
+
