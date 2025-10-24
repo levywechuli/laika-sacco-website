@@ -35,7 +35,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // ✅ CORS Configuration (allow local dev + production frontend)
 const allowedOrigins = [
-  'http://localhost:3000',
+   'http://localhost:3000',
   'http://localhost:5173',
   'http://localhost:8080',
   'http://localhost:8081',
@@ -63,6 +63,7 @@ app.use('/api/membership', membershipRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/loans', loanRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/admin', require('./routes/admin'));
 
 // ✅ Health Check
 app.get('/api/health', (req, res) => {

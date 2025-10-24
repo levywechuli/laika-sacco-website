@@ -1,33 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, User, LayoutDashboard, LogOut } from 'lucide-react';
+import { Menu, X, User, Shield, LayoutDashboard, LogOut } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
-  // ✅ Detect login status automatically when page or route changes
   useEffect(() => {
-    const checkLoginStatus = () => {
-      const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
-      setIsLoggedIn(loggedIn);
-    };
-
-    checkLoginStatus();
-
-    // Listen for changes to localStorage (e.g., login/logout from another tab)
-    window.addEventListener('storage', checkLoginStatus);
-    return () => window.removeEventListener('storage', checkLoginStatus);
+    setIsLoggedIn(localStorage.getItem('isLoggedIn') === 'true');
+    setIsAdmin(localStorage.getItem('isAdmin') === 'true');
   }, [location]);
 
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('memberNumber');
+    localStorage.removeItem('token');
+    localStorage.removeItem('isAdmin');
     setIsLoggedIn(false);
-    navigate('/login');
+    navigate('/');
   };
 
   const isActive = (path: string) => location.pathname === path;
@@ -47,15 +41,13 @@ const Header = () => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <img
-              src="/logo.png/Pasted image.png"
-              alt="Laika SACCO"
+            <img 
+              src="/logo.png/Pasted image.png" 
+              alt="Laika Savings & Credit Cooperative Society Ltd" 
               className="h-12 w-auto"
             />
             <div>
-              <h1 className="text-xl font-bold font-serif text-primary">
-                Laika SACCO
-              </h1>
+              <h1 className="text-xl font-bold font-serif text-primary">Laika SACCO</h1>
               <p className="text-xs text-muted-foreground">Society Limited</p>
             </div>
           </Link>
@@ -77,7 +69,7 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Action Buttons (Dynamic based on login) */}
+          {/* Action Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
             {isLoggedIn ? (
               <>
@@ -87,6 +79,14 @@ const Header = () => {
                     Dashboard
                   </Button>
                 </Link>
+                {isAdmin && (
+                  <Link to="/admin">
+                    <Button variant="outline" size="sm">
+                      <Shield className="w-4 h-4 mr-2" />
+                      Admin
+                    </Button>
+                  </Link>
+                )}
                 <Button variant="gold" size="sm" onClick={handleLogout}>
                   <LogOut className="w-4 h-4 mr-2" />
                   Logout
@@ -136,7 +136,6 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
-
               <div className="pt-4 space-y-2">
                 {isLoggedIn ? (
                   <>
@@ -146,9 +145,17 @@ const Header = () => {
                         Dashboard
                       </Button>
                     </Link>
-                    <Button
-                      variant="gold"
-                      size="sm"
+                    {isAdmin && (
+                      <Link to="/admin" onClick={() => setIsMenuOpen(false)}>
+                        <Button variant="outline" size="sm" className="w-full">
+                          <Shield className="w-4 h-4 mr-2" />
+                          Admin
+                        </Button>
+                      </Link>
+                    )}
+                    <Button 
+                      variant="gold" 
+                      size="sm" 
                       className="w-full"
                       onClick={() => {
                         setIsMenuOpen(false);

@@ -1,70 +1,72 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
+// 🏦 Savings sub-schema
+const savingsSchema = new mongoose.Schema({
+  name: { type: String, required: false },
+  amount: { type: Number, default: 0 }
+}, { _id: false });
+
+// 💸 Loan sub-schema
 const loanSchema = new mongoose.Schema({
-  name: { type: String, required: true },         // e.g., "Normal Loan"
-  balance: { type: Number, default: 0 },          // e.g., 150000
-  limit: { type: Number, default: 0 },            // e.g., 200000
-  status: { type: String, enum: ['Active', 'Available'], default: 'Available' }
-});
+  name: { type: String, required: false },
+  balance: { type: Number, default: 0 },
+  limit: { type: Number, default: 0 },
+  status: { type: String, default: 'Available' }
+}, { _id: false });
 
-const savingSchema = new mongoose.Schema({
-  name: { type: String, required: true },         // e.g., "Deposits"
-  balance: { type: Number, default: 0 }           // e.g., 45750
-});
-
+// 👤 User schema
 const userSchema = new mongoose.Schema({
-  // Login credentials
-  membershipNumber: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true
-  },
+  firstName: { type: String, required: true },
+  lastName: { type: String, default: '' },
+  email: { type: String, unique: true, sparse: true },
+  membershipNumber: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  role: { type: String, enum: ['member', 'admin'], default: 'member' },
+  membershipStatus: { type: String, enum: ['active', 'inactive', 'pending'], default: 'active' },
 
-  password: {
-    type: String,
-    required: true,
-    minlength: 6
-  },
+  // 🧮 Arrays (can be empty safely)
+  savingsProducts: { type: [savingsSchema], default: [] },
+  loanProducts: { type: [loanSchema], default: [] },
 
-  // Personal info
-  fullName: {
-    type: String,
-    
-  },
+  // 🧾 Totals
+  totalSavings: { type: Number, default: 0 },
+  totalLoanBalance: { type: Number, default: 0 },
 
-  // Financial data
-  savingsProducts: [savingSchema],   // e.g. Deposits, Jibebe, Share Capital
-  loanProducts: [loanSchema],        // e.g. Normal Loan, Emergency Loan, etc.
-
-  membershipStatus: {
-    type: String,
-    enum: ['active', 'pending', 'suspended', 'inactive'],
-    default: 'active'
-  },
-
-  lastLogin: Date
+  // 📅 Activity
+  lastLogin: { type: Date },
 }, { timestamps: true });
 
-// Hash password before saving
-userSchema.pre('save', async function(next) {
+// 🔐 Hash password before saving
+userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
-  try {
-    const salt = await bcrypt.genSalt(12);
-    this.password = await bcrypt.hash(this.password, salt);
-    next();
-  } catch (error) {
-    next(error);
-  }
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+  next();
 });
 
-// Compare passwords
-userSchema.methods.comparePassword = async function(candidatePassword) {
-  return await bcrypt.compare(candidatePassword, this.password);
+// ✅ Compare passwords
+userSchema.methods.comparePassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
+
+// 👀 Public profile (safe response)
+userSchema.methods.publicProfile = function () {
+  return {
+    _id: this._id,
+    fullName: `${this.firstName} ${this.lastName}`.trim(),
+    membershipNumber: this.membershipNumber,
+    email: this.email,
+    role: this.role,
+    membershipStatus: this.membershipStatus,
+    totalSavings: this.totalSavings,
+    totalLoanBalance: this.totalLoanBalance,
+    lastLogin: this.lastLogin
+  };
 };
 
 module.exports = mongoose.model('User', userSchema);
+
 
 
 

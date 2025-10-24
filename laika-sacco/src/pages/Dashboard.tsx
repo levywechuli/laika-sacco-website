@@ -13,7 +13,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Fetch real data
+  // Fetch member dashboard
   useEffect(() => {
     const fetchMemberDashboard = async () => {
       try {
@@ -25,7 +25,12 @@ const Dashboard = () => {
 
         if (!res.ok) throw new Error('Failed to fetch member dashboard');
         const data = await res.json();
-        setMember(data);
+
+        console.log('Fetched dashboard data:', data); // 👈 Debugging log
+
+        // ✅ Ensure we store the correct member object
+        const memberData = data.member || data;
+        setMember(memberData);
       } catch (err) {
         console.error(err);
         setError('Could not load your dashboard. Please try again.');
@@ -37,7 +42,7 @@ const Dashboard = () => {
     fetchMemberDashboard();
   }, []);
 
-  // Loading & error handling
+  // Loading state
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -47,6 +52,7 @@ const Dashboard = () => {
     );
   }
 
+  // Error state
   if (error || !member) {
     return (
       <div className="flex items-center justify-center min-h-screen text-red-500">
@@ -56,16 +62,26 @@ const Dashboard = () => {
     );
   }
 
-  // Map backend data to UI variables
-  const savingsProducts = member?.savingsSummary?.map((s: any, index: number) => ({
-    name: s.name,
-    balance: s.amount,
-    icon: [PiggyBank, TrendingUp, Wallet][index % 3], // rotate icons
-    color: ['text-primary', 'text-gold', 'text-accent'][index % 3],
-    bgColor: ['bg-primary/10', 'bg-gold/10', 'bg-accent/10'][index % 3],
-  })) || [];
+  // ✅ Correctly extract user data
+  const fullName =
+  member?.fullName ||
+  member?.fullname ||
+  member?.memberName?.replace('undefined undefined', '').trim() ||
+  'Member';
+  const membershipNumber = member?.membershipNumber || 'N/A';
+
+  const savingsProducts =
+    member?.savingsSummary?.map((s: any, index: number) => ({
+      name: s.name,
+      balance: s.amount,
+      icon: [PiggyBank, TrendingUp, Wallet][index % 3],
+      color: ['text-primary', 'text-gold', 'text-accent'][index % 3],
+      bgColor: ['bg-primary/10', 'bg-gold/10', 'bg-accent/10'][index % 3],
+    })) || [];
 
   const loanProducts = member?.loans || [];
+  const totalSavings = member?.totalSavings || 0;
+  const totalLoanBalance = member?.totalLoanBalance || 0;
 
   const announcements = [
     {
@@ -88,20 +104,15 @@ const Dashboard = () => {
     },
   ];
 
-  const totalSavings = member?.totalSavings || 0;
-  const totalLoanBalance = member?.totalLoanBalance || 0;
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-secondary to-card-elevated">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Welcome Section */}
+        {/* 👇 Welcome Section */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold font-serif text-primary mb-2">
-            Welcome Back, {member?.memberName}
+            Welcome Back, {fullName}
           </h1>
-          <p className="text-muted-foreground">
-            Membership No: {member?.membershipNumber}
-          </p>
+          <p className="text-muted-foreground">Membership No: {membershipNumber}</p>
         </div>
 
         {/* Quick Stats */}
@@ -187,10 +198,7 @@ const Dashboard = () => {
                 {loanProducts.map((loan: any) => {
                   const progress = loan.limit > 0 ? (loan.balance / loan.limit) * 100 : 0;
                   return (
-                    <div
-                      key={loan.name}
-                      className="border-b border-border last:border-0 pb-4 last:pb-0"
-                    >
+                    <div key={loan.name} className="border-b border-border last:border-0 pb-4 last:pb-0">
                       <div className="flex items-center justify-between mb-2">
                         <div>
                           <h3 className="font-semibold text-primary">{loan.name}</h3>
