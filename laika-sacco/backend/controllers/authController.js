@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-// ✅ LOGIN CONTROLLER
 // ✅ LOGIN CONTROLLER (Fixed)
 exports.login = async (req, res) => {
   try {
@@ -59,12 +58,11 @@ exports.login = async (req, res) => {
       member: safeUser,
     });
   } catch (error) {
-  console.error('💥 Login error details:', error);
-  res.status(500).json({ 
-    message: 'Server error during login', 
-    error: error.message, 
-    stack: error.stack 
-  });
-
-};
-
+    console.error('💥 Login error details:', error);
+    res.status(500).json({ 
+      message: 'Server error during login', 
+      error: error.message, 
+      stack: error.stack 
+    });
+  }
+}; // ✅ this was missing

@@ -3,8 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useToast } from '@/hooks/use-toast';
+import { useNavigate } from 'react-router-dom';
 import { 
   CheckCircle, 
   Users, 
@@ -14,32 +14,34 @@ import {
   DollarSign,
   FileText,
   Clock,
-  Award
+  Award,
+  Download,
+  MapPin,
+  Phone,
+  Mail
 } from 'lucide-react';
 
 const Membership = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
+  const { toast } = useToast();
+  const navigate = useNavigate();
+  const [callbackForm, setCallbackForm] = useState({
+    name: '',
     phone: '',
-    idNumber: '',
-    occupation: '',
-    employer: '',
-    income: '',
-    accountType: '',
-    initialDeposit: '',
-    comments: ''
+    email: ''
   });
 
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+  const handleCallbackSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // In production, send this to your backend
+    toast({
+      title: "Request Received!",
+      description: "Our team will contact you within 24 hours.",
+    });
+    setCallbackForm({ name: '', phone: '', email: '' });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+  const handleDownloadForm = () => {
+    navigate('/membership-form');
   };
 
   return (
@@ -74,9 +76,9 @@ const Membership = () => {
                 <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto">
                   <TrendingUp className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-primary">Sustainable Business Growth</h3>
+                <h3 className="text-lg font-semibold text-primary">High Returns</h3>
                 <p className="text-sm text-muted-foreground">
-                  Experience long-term financial stability with our commitment to sustainable growth and sound business practices.
+                  Earn up to 10% annual dividends on your savings
                 </p>
               </CardContent>
             </Card>
@@ -86,9 +88,9 @@ const Membership = () => {
                 <div className="w-16 h-16 bg-gradient-gold rounded-full flex items-center justify-center mx-auto">
                   <CreditCard className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-primary">Competitive Returns on Savings</h3>
+                <h3 className="text-lg font-semibold text-primary">Easy Loans</h3>
                 <p className="text-sm text-muted-foreground">
-                 Enjoy attractive rates of return on your deposits and shares, designed to maximize your earnings.
+                  Access loans up to 3x your savings with competitive rates
                 </p>
               </CardContent>
             </Card>
@@ -98,9 +100,9 @@ const Membership = () => {
                 <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto">
                   <Shield className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-primary">Favourable Loan & Savings Products</h3>
+                <h3 className="text-lg font-semibold text-primary">Regulated & Transparent</h3>
                 <p className="text-sm text-muted-foreground">
-                 Access a wide range of savings and loan products tailored to suit your needs — all offered at member-friendly terms.
+                 Your deposits are handled under strict financial standards and transparency policies.
                 </p>
               </CardContent>
             </Card>
@@ -110,9 +112,9 @@ const Membership = () => {
                 <div className="w-16 h-16 bg-gradient-gold rounded-full flex items-center justify-center mx-auto">
                   <Award className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-primary">Enhanced Borrowing Power</h3>
+                <h3 className="text-lg font-semibold text-primary">Exclusive Services</h3>
                 <p className="text-sm text-muted-foreground">
-                  Unlock borrowing capacity of up to 3 times your total deposits, empowering you to achieve your financial goals.
+                  Priority banking and personalized financial advisory
                 </p>
               </CardContent>
             </Card>
@@ -164,15 +166,15 @@ const Membership = () => {
               <Card className="text-center p-6 shadow-card">
                 <CardContent className="space-y-4">
                   <Users className="w-12 h-12 text-gold mx-auto" />
-                  <div className="text-2xl font-bold text-primary">1500+</div>
+                  <div className="text-2xl font-bold text-primary">1800+</div>
                   <p className="text-sm text-muted-foreground">Happy Members</p>
                 </CardContent>
               </Card>
               <Card className="text-center p-6 shadow-card">
                 <CardContent className="space-y-4">
                   <DollarSign className="w-12 h-12 text-gold mx-auto" />
-                  <div className="text-2xl font-bold text-primary">12%</div>
-                  <p className="text-sm text-muted-foreground">Annual dividends</p>
+                  <div className="text-2xl font-bold text-primary">KES 66M</div>
+                  <p className="text-sm text-muted-foreground">Total Assets</p>
                 </CardContent>
               </Card>
               <Card className="text-center p-6 shadow-card">
@@ -194,165 +196,177 @@ const Membership = () => {
         </div>
       </section>
 
-      {/* Registration Form */}
+      {/* How to Apply Section */}
       <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold font-serif text-primary mb-4">
-              Membership Application
+              How to Apply for Membership
             </h2>
             <p className="text-lg text-muted-foreground">
-              Fill out the form below to start your membership application
+              Three easy ways to start your membership journey
             </p>
           </div>
 
-          <Card className="shadow-premium">
-            <CardHeader>
-              <CardTitle className="text-2xl text-primary text-center">
-                Join Laika SACCO Today
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Personal Information */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName">First Name *</Label>
-                    <Input
-                      id="firstName"
-                      value={formData.firstName}
-                      onChange={(e) => handleInputChange('firstName', e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName">Last Name *</Label>
-                    <Input
-                      id="lastName"
-                      value={formData.lastName}
-                      onChange={(e) => handleInputChange('lastName', e.target.value)}
-                      required
-                    />
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {/* Option 1: Download Form */}
+            <Card className="shadow-card hover:shadow-premium transition-all duration-300">
+              <CardContent className="p-8 text-center space-y-6">
+                <div className="w-20 h-20 bg-gradient-primary rounded-full flex items-center justify-center mx-auto">
+                  <Download className="w-10 h-10 text-white" />
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email Address *</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => handleInputChange('email', e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number *</Label>
-                    <Input
-                      id="phone"
-                      value={formData.phone}
-                      onChange={(e) => handleInputChange('phone', e.target.value)}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="idNumber">National ID / Passport Number *</Label>
-                  <Input
-                    id="idNumber"
-                    value={formData.idNumber}
-                    onChange={(e) => handleInputChange('idNumber', e.target.value)}
-                    required
-                  />
-                </div>
-
-                {/* Employment Information */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="occupation">Occupation *</Label>
-                    <Input
-                      id="occupation"
-                      value={formData.occupation}
-                      onChange={(e) => handleInputChange('occupation', e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="employer">Employer / Business Name</Label>
-                    <Input
-                      id="employer"
-                      value={formData.employer}
-                      onChange={(e) => handleInputChange('employer', e.target.value)}
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="income">Monthly Income Range *</Label>
-                  <Select onValueChange={(value) => handleInputChange('income', value)}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select income range" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="below-30k">Below KES 30,000</SelectItem>
-                      <SelectItem value="30k-50k">KES 30,000 - 50,000</SelectItem>
-                      <SelectItem value="50k-100k">KES 50,000 - 100,000</SelectItem>
-                      <SelectItem value="100k-200k">KES 100,000 - 200,000</SelectItem>
-                      <SelectItem value="above-200k">Above KES 200,000</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                {/* Account Information */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="accountType">Preferred Account Type *</Label>
-                    <Select onValueChange={(value) => handleInputChange('accountType', value)}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select account type" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="regular">Regular Savings</SelectItem>
-                        <SelectItem value="fixed">Fixed Deposit</SelectItem>
-                        <SelectItem value="business">Business Account</SelectItem>
-                        <SelectItem value="junior">Junior Savings</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="initialDeposit">Initial Deposit Amount (KES) *</Label>
-                    <Input
-                      id="initialDeposit"
-                      type="number"
-                      min="1000"
-                      value={formData.initialDeposit}
-                      onChange={(e) => handleInputChange('initialDeposit', e.target.value)}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="comments">Additional Comments</Label>
-                  <Textarea
-                    id="comments"
-                    value={formData.comments}
-                    onChange={(e) => handleInputChange('comments', e.target.value)}
-                    rows={4}
-                    placeholder="Any additional information or questions..."
-                  />
-                </div>
-
-                <div className="flex justify-center pt-6">
-                  <Button type="submit" variant="premium" size="lg" className="w-full md:w-auto">
-                    Submit Application
+                <div>
+                  <h3 className="text-xl font-semibold text-primary mb-3">
+                    Download Application Form
+                  </h3>
+                  <p className="text-muted-foreground mb-6">
+                    Download, print, and fill out our membership form at your convenience
+                  </p>
+                  <Button 
+                    onClick={handleDownloadForm}
+                    variant="premium" 
+                    className="w-full"
+                  >
+                    <Download className="w-4 h-4 mr-2" />
+                    Download PDF Form
                   </Button>
                 </div>
+              </CardContent>
+            </Card>
+
+            {/* Option 2: Visit Office */}
+            <Card className="shadow-card hover:shadow-premium transition-all duration-300 border-2 border-gold">
+              <CardContent className="p-8 text-center space-y-6">
+                <div className="w-20 h-20 bg-gradient-gold rounded-full flex items-center justify-center mx-auto">
+                  <MapPin className="w-10 h-10 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-primary mb-3">
+                    Visit Our Office
+                  </h3>
+                  <p className="text-muted-foreground mb-6">
+                    Come to our office and our team will assist you with the application process
+                  </p>
+                  <div className="space-y-2 text-sm text-muted-foreground">
+                    <p className="font-medium text-primary">Laika SACCO Plaza</p>
+                    <p>Kenyatta Avenue, Nairobi</p>
+                    <p>Mon - Fri: 8:00 AM - 5:00 PM</p>
+                    <p>Sat: 9:00 AM - 1:00 PM</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Option 3: Request Callback */}
+            <Card className="shadow-card hover:shadow-premium transition-all duration-300">
+              <CardContent className="p-8 text-center space-y-6">
+                <div className="w-20 h-20 bg-gradient-primary rounded-full flex items-center justify-center mx-auto">
+                  <Phone className="w-10 h-10 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-primary mb-3">
+                    Request a Callback
+                  </h3>
+                  <p className="text-muted-foreground mb-6">
+                    Leave your details and our team will contact you within 24 hours
+                  </p>
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => document.getElementById('callback-form')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    Request Callback
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Callback Form */}
+          <Card id="callback-form" className="max-w-2xl mx-auto shadow-premium">
+            <CardHeader>
+              <CardTitle className="text-2xl text-primary text-center">
+                Request a Callback
+              </CardTitle>
+              <p className="text-center text-muted-foreground">
+                Fill in your details and we'll get back to you
+              </p>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleCallbackSubmit} className="space-y-6">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Full Name *</Label>
+                  <Input
+                    id="name"
+                    value={callbackForm.name}
+                    onChange={(e) => setCallbackForm(prev => ({ ...prev, name: e.target.value }))}
+                    required
+                    placeholder="John Doe"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="callback-phone">Phone Number *</Label>
+                  <Input
+                    id="callback-phone"
+                    value={callbackForm.phone}
+                    onChange={(e) => setCallbackForm(prev => ({ ...prev, phone: e.target.value }))}
+                    required
+                    placeholder="+254 712 345 678"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="callback-email">Email Address *</Label>
+                  <Input
+                    id="callback-email"
+                    type="email"
+                    value={callbackForm.email}
+                    onChange={(e) => setCallbackForm(prev => ({ ...prev, email: e.target.value }))}
+                    required
+                    placeholder="john@example.com"
+                  />
+                </div>
+
+                <Button type="submit" variant="premium" size="lg" className="w-full">
+                  Request Callback
+                </Button>
               </form>
             </CardContent>
           </Card>
+
+          {/* Contact Information */}
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+            <div className="flex flex-col items-center space-y-3">
+              <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center">
+                <Phone className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <p className="font-semibold text-primary">Call Us</p>
+                <p className="text-muted-foreground">+254 795 900 483
+                 <br />+254 700 335 065</p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center space-y-3">
+              <div className="w-12 h-12 bg-gradient-gold rounded-full flex items-center justify-center">
+                <Mail className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <p className="font-semibold text-primary">Email Us</p>
+                <p className="text-muted-foreground">Laikasaccosociety@gmail.com</p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center space-y-3">
+              <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center">
+                <MapPin className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <p className="font-semibold text-primary">Visit Us</p>
+                <p className="text-muted-foreground">Amani House, 2nd Floor
+Kenyatta Highway – Mukiriti Thika, Kenya.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

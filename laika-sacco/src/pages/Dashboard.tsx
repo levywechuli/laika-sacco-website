@@ -203,7 +203,7 @@ const Dashboard = () => {
                         <div>
                           <h3 className="font-semibold text-primary">{loan.name}</h3>
                           <p className="text-sm text-muted-foreground">
-                            Balance: KES {loan.balance.toLocaleString()} / Limit: KES{' '}
+                            Toatal paid: KES {loan.balance.toLocaleString()} Total Loan: KES{' '}
                             {loan.limit.toLocaleString()}
                           </p>
                         </div>

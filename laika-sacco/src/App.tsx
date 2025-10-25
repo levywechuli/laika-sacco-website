@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Products from "./pages/Products";
 import Membership from "./pages/Membership";
+import MembershipForm from "./pages/MembershipForm";
 import News from "./pages/News";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
             <Route path="/membership" element={<Membership />} />
+            <Route path="/membership-form" element={<MembershipForm />} />
             <Route path="/news" element={<News />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
