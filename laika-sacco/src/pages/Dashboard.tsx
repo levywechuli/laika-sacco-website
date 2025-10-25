@@ -64,10 +64,10 @@ const Dashboard = () => {
 
   // ✅ Correctly extract user data
   const fullName =
-  member?.fullName ||
-  member?.fullname ||
-  member?.memberName?.replace('undefined undefined', '').trim() ||
-  'Member';
+    member?.fullName ||
+    member?.fullname ||
+    member?.memberName?.replace('undefined undefined', '').trim() ||
+    'Member';
   const membershipNumber = member?.membershipNumber || 'N/A';
 
   const savingsProducts =
@@ -107,47 +107,40 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-secondary to-card-elevated">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* 👇 Welcome Section */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold font-serif text-primary mb-2">
-            Welcome Back, {fullName}
-          </h1>
-          <p className="text-muted-foreground">Membership No: {membershipNumber}</p>
+        
+        {/* 👇 Updated Welcome Section */}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+          <div>
+            <h1 className="text-3xl font-bold text-primary mb-1">
+              Welcome back, {fullName}
+            </h1>
+            <p className="text-muted-foreground">Member NO: {membershipNumber}</p>
+          </div>
         </div>
 
-        {/* Quick Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <Card className="shadow-premium">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-muted-foreground mb-1">Total Savings</p>
-                  <p className="text-3xl font-bold text-primary">
-                    KES {totalSavings.toLocaleString()}
-                  </p>
-                </div>
-                <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center">
-                  <PiggyBank className="w-6 h-6 text-white" />
-                </div>
+        {/* 👇 Modern Blue Summary Card */}
+        <div className="bg-gradient-to-r from-[#001F3F] to-[#003366] rounded-2xl shadow-xl p-10 text-white">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+            {/* Total Savings */}
+            <div>
+              <h2 className="text-lg font-medium mb-2">Total Savings</h2>
+              <p className="text-4xl font-bold mb-4">
+                KES {totalSavings.toLocaleString()}
+              </p>
+              <div className="flex items-center text-sm text-blue-100">
+                <span className="bg-blue-500/30 px-3 py-1 rounded-full mr-2">↑ +12.5%</span>
+                vs last month
               </div>
-            </CardContent>
-          </Card>
+            </div>
 
-          <Card className="shadow-premium">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-muted-foreground mb-1">Total Loan Balance</p>
-                  <p className="text-3xl font-bold text-primary">
-                    KES {totalLoanBalance.toLocaleString()}
-                  </p>
-                </div>
-                <div className="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center">
-                  <Wallet className="w-6 h-6 text-gold" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+            {/* Total Loan Balance */}
+            <div className="mt-8 md:mt-0 text-right">
+              <h2 className="text-lg font-medium mb-2">Total Loan Balance</h2>
+              <p className="text-4xl font-bold">
+                KES {totalLoanBalance.toLocaleString()}
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Savings Summary */}
@@ -191,27 +184,41 @@ const Dashboard = () => {
 
         {/* Loan Products */}
         <div className="mb-8">
-          <h2 className="text-2xl font-bold font-serif text-primary mb-4">Loan Products</h2>
-          <Card className="shadow-premium">
-            <CardContent className="p-6">
+  <h2 className="text-2xl font-bold font-serif text-primary mb-4">Loan Products</h2>
+  <Card className="shadow-premium">
+    <CardContent className="p-6">
+      {(() => {
+        // ✅ Define validLoans here safely before JSX rendering
+        const validLoans = loanProducts.filter(
+          (loan: any) => loan.limit > 0 || loan.balance > 0
+        );
+
+        return (
+          <>
+            {validLoans.length > 0 ? (
+              // ✅ Show member’s real loans
               <div className="space-y-4">
-                {loanProducts.map((loan: any) => {
-                  const progress = loan.limit > 0 ? (loan.balance / loan.limit) * 100 : 0;
+                {validLoans.map((loan: any) => {
+                  const progress =
+                    loan.limit > 0 ? (loan.balance / loan.limit) * 100 : 0;
                   return (
-                    <div key={loan.name} className="border-b border-border last:border-0 pb-4 last:pb-0">
+                    <div
+                      key={loan.name}
+                      className="border-b border-border last:border-0 pb-4 last:pb-0"
+                    >
                       <div className="flex items-center justify-between mb-2">
                         <div>
                           <h3 className="font-semibold text-primary">{loan.name}</h3>
                           <p className="text-sm text-muted-foreground">
-                            Toatal paid: KES {loan.balance.toLocaleString()} Total Loan: KES{' '}
+                            Total paid: KES {loan.balance.toLocaleString()} Total Loan: KES{" "}
                             {loan.limit.toLocaleString()}
                           </p>
                         </div>
                         <span
                           className={`text-xs px-2 py-1 rounded-full ${
-                            loan.status === 'Active'
-                              ? 'bg-gold/20 text-gold'
-                              : 'bg-primary/20 text-primary'
+                            loan.status === "Active"
+                              ? "bg-gold/20 text-gold"
+                              : "bg-primary/20 text-primary"
                           }`}
                         >
                           {loan.status}
@@ -222,16 +229,27 @@ const Dashboard = () => {
                   );
                 })}
               </div>
-              <div className="mt-6">
-                <Link to="/products">
-                  <Button variant="premium" className="w-full">
-                    Apply for New Loan
-                  </Button>
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+            ) : (
+              // ✅ If no loans, show message
+              <p className="text-sm text-muted-foreground text-center py-4">
+                You currently have no active loans.
+              </p>
+            )}
+
+            {/* ✅ Apply button always visible */}
+            <div className="mt-6">
+              <Link to="/products">
+                <Button variant="premium" className="w-full">
+                  Apply for New Loan
+                </Button>
+              </Link>
+            </div>
+          </>
+        );
+      })()}
+    </CardContent>
+  </Card>
+</div>
 
         {/* Announcements */}
         <div>
@@ -278,6 +296,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-
-
